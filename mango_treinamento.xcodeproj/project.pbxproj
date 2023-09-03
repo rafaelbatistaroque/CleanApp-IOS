@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		53A449FB2A990C8D007DF156 /* Domain.h in Headers */ = {isa = PBXBuildFile; fileRef = 53A449FA2A990C8D007DF156 /* Domain.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595D2AA52058008AE97C /* AddAccountInput.swift */; };
+		535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595F2AA5206B008AE97C /* AddAccountOutput.swift */; };
+		53A44A002A991012007DF156 /* AddAccount_Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A449FF2A991012007DF156 /* AddAccount_Protocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5358595D2AA52058008AE97C /* AddAccountInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountInput.swift; sourceTree = "<group>"; };
+		5358595F2AA5206B008AE97C /* AddAccountOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountOutput.swift; sourceTree = "<group>"; };
 		53A449F82A990C8D007DF156 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		53A449FA2A990C8D007DF156 /* Domain.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Domain.h; sourceTree = "<group>"; };
+		53A449FF2A991012007DF156 /* AddAccount_Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount_Protocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +30,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5358595C2AA5203B008AE97C /* AddAccount */ = {
+			isa = PBXGroup;
+			children = (
+				53A449FF2A991012007DF156 /* AddAccount_Protocol.swift */,
+				5358595D2AA52058008AE97C /* AddAccountInput.swift */,
+				5358595F2AA5206B008AE97C /* AddAccountOutput.swift */,
+			);
+			path = AddAccount;
+			sourceTree = "<group>";
+		};
 		53A449DF2A990B4B007DF156 = {
 			isa = PBXGroup;
 			children = (
@@ -45,7 +59,7 @@
 		53A449F92A990C8D007DF156 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				53A449FA2A990C8D007DF156 /* Domain.h */,
+				5358595C2AA5203B008AE97C /* AddAccount */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -57,7 +71,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53A449FB2A990C8D007DF156 /* Domain.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +106,7 @@
 				TargetAttributes = {
 					53A449F72A990C8D007DF156 = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -129,6 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */,
+				53A44A002A991012007DF156 /* AddAccount_Protocol.swift in Sources */,
+				535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +275,7 @@
 		53A449FD2A990C8D007DF156 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -284,6 +302,7 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -291,6 +310,7 @@
 		53A449FE2A990C8D007DF156 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
