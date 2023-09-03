@@ -1,5 +1,6 @@
 import XCTest
 import Domain
+import Application
 
 final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenHttpPostClient_thenMustBePassingCorrectUrl(){
@@ -49,23 +50,5 @@ extension RemoteAddAccountUseCaseTests {
             self.url = url
             self.content = content
         }
-    }
-}
-
-protocol HttpPostClientProtocol{
-    func post(to url: URL, with content: Data?)
-}
-
-class RemoteAddAccountUseCase{
-    private let url: URL
-    private let httpClient: HttpPostClientProtocol
-    
-    init(url: URL, httpClient: HttpPostClientProtocol) {
-        self.url = url
-        self.httpClient = httpClient
-    }
-    
-    func handle(input: AddAccountInput){
-        self.httpClient.post(to: self.url, with: input.toData())
     }
 }
