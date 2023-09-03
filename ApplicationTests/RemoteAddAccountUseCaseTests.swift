@@ -19,14 +19,6 @@ protocol HttpPostClientProtocol{
     func post(url: URL)
 }
 
-class HttpClientSpy: HttpPostClientProtocol{
-    var url: URL?
-    
-    func post(url: URL) {
-        self.url = url
-    }
-}
-
 class RemoteAddAccountUseCase{
     private let url: URL
     private let httpClient: HttpPostClientProtocol
@@ -41,3 +33,14 @@ class RemoteAddAccountUseCase{
     }
 }
 
+extension RemoteAddAccountUseCaseTests {
+ 
+    class HttpClientSpy: HttpPostClientProtocol{
+        var url: URL?
+        
+        func post(url: URL) {
+            self.url = url
+        }
+    }
+
+}
