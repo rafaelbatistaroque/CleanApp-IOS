@@ -1,5 +1,5 @@
 import Foundation
-struct AddAccountInput{
+public struct AddAccountInput{
     let name: String
     let email: String
     let password: String

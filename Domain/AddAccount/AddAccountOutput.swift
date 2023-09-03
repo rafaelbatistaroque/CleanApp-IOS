@@ -1,5 +1,5 @@
 import Foundation
-struct AddAccountOutput{
+public struct AddAccountOutput{
     let id: String
     let name: String
     let email: String

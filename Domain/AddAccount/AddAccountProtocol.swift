@@ -1,6 +1,6 @@
 import Foundation
 
 //MARK: - Add account
-protocol AddAccountProtocol{
+public protocol AddAccountProtocol{
     func handle(input: AddAccountInput) -> Result<AddAccountOutput, Error>
 }
