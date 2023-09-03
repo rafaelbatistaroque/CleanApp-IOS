@@ -13,6 +13,7 @@
 		5358598F2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358598E2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift */; };
 		535859982AA523B1008AE97C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A449F82A990C8D007DF156 /* Domain.framework */; };
 		535859992AA523B1008AE97C /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53A449F82A990C8D007DF156 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		535859A12AA548F9008AE97C /* InputAggregatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535859A02AA548F9008AE97C /* InputAggregatorProtocol.swift */; };
 		53A44A002A991012007DF156 /* AddAccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A449FF2A991012007DF156 /* AddAccountProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +54,7 @@
 		535859822AA52202008AE97C /* Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		535859892AA52203008AE97C /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5358598E2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountUseCaseTests.swift; sourceTree = "<group>"; };
+		535859A02AA548F9008AE97C /* InputAggregatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputAggregatorProtocol.swift; sourceTree = "<group>"; };
 		53A449F82A990C8D007DF156 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A449FF2A991012007DF156 /* AddAccountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -116,6 +118,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		5358599F2AA548CE008AE97C /* Aggregators */ = {
+			isa = PBXGroup;
+			children = (
+				535859A02AA548F9008AE97C /* InputAggregatorProtocol.swift */,
+			);
+			path = Aggregators;
+			sourceTree = "<group>";
+		};
 		53A449DF2A990B4B007DF156 = {
 			isa = PBXGroup;
 			children = (
@@ -140,6 +150,7 @@
 		53A449F92A990C8D007DF156 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				5358599F2AA548CE008AE97C /* Aggregators */,
 				5358595C2AA5203B008AE97C /* AddAccount */,
 			);
 			path = Domain;
@@ -310,6 +321,7 @@
 				5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */,
 				53A44A002A991012007DF156 /* AddAccountProtocol.swift in Sources */,
 				535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */,
+				535859A12AA548F9008AE97C /* InputAggregatorProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

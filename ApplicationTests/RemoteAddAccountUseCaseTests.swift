@@ -50,7 +50,6 @@ extension RemoteAddAccountUseCaseTests {
             self.content = content
         }
     }
-    
 }
 
 protocol HttpPostClientProtocol{
@@ -67,7 +66,6 @@ class RemoteAddAccountUseCase{
     }
     
     func handle(input: AddAccountInput){
-        let content = try? JSONEncoder().encode(input);
-        self.httpClient.post(to: self.url, with: content)
+        self.httpClient.post(to: self.url, with: input.toData())
     }
 }

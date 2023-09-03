@@ -1,5 +1,5 @@
 import Foundation
-public struct AddAccountInput: Encodable{
+public struct AddAccountInput: InputAggregatorProtocol {
     public let name: String
     public let email: String
     public let password: String
