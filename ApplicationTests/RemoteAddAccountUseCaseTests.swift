@@ -4,28 +4,25 @@ import Domain
 final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenHttpPostClient_thenMustBePassingCorrectUrl(){
         //arrange
-        let httpClientSpy = HttpClientSpy()
-        let expectedRemoteUrl = URL(string: "https://any_url.com")
-        let sut = createSUT(withHttpClient: httpClientSpy, withUrl: expectedRemoteUrl)
+        let expectedRemoteUrl = URL(string: "https://any_url.com")!
+        let (sut, httpClientSpy) = createSUT(url: expectedRemoteUrl)
         
         //act
-        sut.handle(input: fakeInputValid())
-
+        sut.handle(input: fakeAddAccountInputValid())
+        
         //asset
         XCTAssertEqual(expectedRemoteUrl, httpClientSpy.url)
     }
     
     func test_givenAddAccount_whenHttpPostClient_thenMustBePassingCorrectData(){
         //arrange
-        let httpClientSpy = HttpClientSpy()
-        let sut = createSUT(withHttpClient: httpClientSpy)
-        let input = fakeInputValid()
+        let (sut,httpClientSpy) = createSUT()
+        let input = fakeAddAccountInputValid()
         let expectedContent = try? JSONEncoder().encode(input);
-        
         
         //act
         sut.handle(input: input)
-
+        
         //asset
         XCTAssertEqual(expectedContent, httpClientSpy.content)
     }
@@ -33,12 +30,15 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
 
 extension RemoteAddAccountUseCaseTests {
     
-    func fakeInputValid() -> AddAccountInput{
+    func fakeAddAccountInputValid() -> AddAccountInput{
         return AddAccountInput(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
     }
     
-    func createSUT(withHttpClient: HttpPostClientProtocol, withUrl:URL? = URL(string: "https://any_url.com")) -> RemoteAddAccountUseCase{
-        return RemoteAddAccountUseCase(url: withUrl!, httpClient: withHttpClient)
+    func createSUT(url: URL = URL(string: "https://any_url.com")!) -> (sut: RemoteAddAccountUseCase, httpClient: HttpClientSpy){
+        let httpClientSpy = HttpClientSpy()
+        let sut = RemoteAddAccountUseCase(url: url, httpClient: httpClientSpy)
+
+        return (sut, httpClientSpy)
     }
     
     class HttpClientSpy: HttpPostClientProtocol{
@@ -50,7 +50,7 @@ extension RemoteAddAccountUseCaseTests {
             self.content = content
         }
     }
-
+    
 }
 
 protocol HttpPostClientProtocol{
@@ -65,7 +65,7 @@ class RemoteAddAccountUseCase{
         self.url = url
         self.httpClient = httpClient
     }
-     
+    
     func handle(input: AddAccountInput){
         let content = try? JSONEncoder().encode(input);
         self.httpClient.post(to: self.url, with: content)
