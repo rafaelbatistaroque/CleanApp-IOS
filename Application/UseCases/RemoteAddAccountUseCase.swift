@@ -14,12 +14,12 @@ final public class RemoteAddAccountUseCase : AddAccountProtocol {
         let result = await self.httpClient.post(to: self.url, with: input.toData())
         
         switch result{
+        case .failure(.noConnectivity):
+            return .failure(.unexpected)
         case .success(let data):
             if let accountOutput: AddAccountOutput = data.toDTO(){
                 return .success(accountOutput)
             }
-            return .failure(.unexpected)
-        case .failure(.noConnectivity):
             return .failure(.unexpected)
         }
     }

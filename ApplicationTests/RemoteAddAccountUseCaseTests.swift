@@ -40,7 +40,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         XCTAssertEqual(Result.failure(.unexpected), result)
     }
     
-    func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultUnexpectedData() async {
+    func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultData() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
         let expectedAccountOutput = createAddAccountOutput();
@@ -51,6 +51,18 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
        
         //asset
         XCTAssertEqual(Result.success(expectedAccountOutput), result)
+    }
+    
+    func test_givenAddAccount_whenInvalidDataFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.setupResult(result: Data("invalid_data".utf8))
+        
+        //act
+        let result = await sut.handle(input: fakeAddAccountInputValid())
+       
+        //asset
+        XCTAssertEqual(Result.failure(DomainError.unexpected), result)
     }
 }
 
