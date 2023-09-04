@@ -3,29 +3,41 @@ import Domain
 import Application
 
 final class RemoteAddAccountUseCaseTests: XCTestCase {
-    func test_givenAddAccount_whenHttpPostClient_thenMustBePassingCorrectUrl(){
+    func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectUrl() async {
         //arrange
         let expectedRemoteUrl = URL(string: "https://any_url.com")!
         let (sut, httpClientSpy) = createSUT(url: expectedRemoteUrl)
         
         //act
-        sut.handle(input: fakeAddAccountInputValid())
+        let _ = await sut.handle(input: fakeAddAccountInputValid())
         
         //asset
         XCTAssertEqual([expectedRemoteUrl], httpClientSpy.urls)
     }
     
-    func test_givenAddAccount_whenHttpPostClient_thenMustBePassingCorrectData(){
+    func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectData() async{
         //arrange
-        let (sut,httpClientSpy) = createSUT()
+        let (sut, httpClientSpy) = createSUT()
         let input = fakeAddAccountInputValid()
-        let expectedContent = try? JSONEncoder().encode(input);
+        let expectedContent = input.toData();
         
         //act
-        sut.handle(input: input)
+        let _ = await sut.handle(input: input)
         
         //asset
         XCTAssertEqual(expectedContent, httpClientSpy.content)
+    }
+    
+    func test_givenAddAccount_whenFailsHttpPostClient_thenMustBeReturnResultError() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.setupFailure(erro: HttpError.noConnectivity)
+        
+        //act
+        let result = await sut.handle(input: fakeAddAccountInputValid())
+       
+        //asset
+        XCTAssertEqual(.unexpected, result)
     }
 }
 
@@ -46,10 +58,24 @@ extension RemoteAddAccountUseCaseTests {
         var urls = [URL]()
         var content: Data?
         var callsCount: Int = 0
+        var isFailure: Bool = false
+        var result: Result<Data, HttpError> = .failure(HttpError.any)
         
-        func post(to url: URL, with content: Data?) {
+        func post(to url: URL, with content: Data?) async -> Result<Data, HttpError> {
             self.urls.append(url)
             self.content = content
+            
+            return result
+        }
+
+        func setupFailure(erro: HttpError){
+            isFailure = true
+            self.result = .failure(erro)
+        }
+        
+        func setupSuccess(data: Data){
+            isFailure = true
+            self.result = .success(data)
         }
     }
 }

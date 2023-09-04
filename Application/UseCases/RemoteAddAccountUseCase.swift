@@ -10,7 +10,11 @@ final public class RemoteAddAccountUseCase{
         self.httpClient = httpClient
     }
     
-    public func handle(input: AddAccountInput){
-        self.httpClient.post(to: self.url, with: input.toData())
+    public func handle(input: AddAccountInput) async -> DomainError {
+        let result = await self.httpClient.post(to: self.url, with: input.toData())
+        if result == .failure(.noConnectivity){
+            return DomainError.unexpected
+        }
+        return DomainError.any
     }
 }
