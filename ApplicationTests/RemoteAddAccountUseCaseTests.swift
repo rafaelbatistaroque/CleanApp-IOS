@@ -25,19 +25,19 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         let _ = await sut.handle(input: input)
         
         //asset
-        XCTAssertEqual(expectedContent, httpClientSpy.content)
+        XCTAssertEqual(expectedContent, httpClientSpy.inputData)
     }
     
-    func test_givenAddAccount_whenFailsHttpPostClient_thenMustBeReturnResultError() async {
+    func test_givenAddAccount_whenNoConnectivityFailsHttpPostClient_thenMustBeReturnResultUnexpectedError() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        httpClientSpy.setupFailure(erro: HttpError.noConnectivity)
+        httpClientSpy.setupResult(result: .noConnectivity)
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
        
         //asset
-        XCTAssertEqual(.unexpected, result)
+        XCTAssertEqual(.failure(.unexpected), result)
     }
 }
 
@@ -56,26 +56,23 @@ extension RemoteAddAccountUseCaseTests {
     
     class HttpClientSpy: HttpPostClientProtocol{
         var urls = [URL]()
-        var content: Data?
+        var inputData: Data?
         var callsCount: Int = 0
-        var isFailure: Bool = false
         var result: Result<Data, HttpError> = .failure(HttpError.any)
         
         func post(to url: URL, with content: Data?) async -> Result<Data, HttpError> {
             self.urls.append(url)
-            self.content = content
+            self.inputData = content
             
             return result
         }
 
-        func setupFailure(erro: HttpError){
-            isFailure = true
-            self.result = .failure(erro)
+        func setupResult(result: HttpError){
+            self.result = .failure(result)
         }
         
-        func setupSuccess(data: Data){
-            isFailure = true
-            self.result = .success(data)
+        func setupResult(result: Data){
+            self.result = .success(result)
         }
     }
 }
