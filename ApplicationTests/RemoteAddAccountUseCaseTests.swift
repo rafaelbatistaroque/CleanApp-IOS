@@ -5,14 +5,16 @@ import Application
 final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectUrl() async {
         //arrange
-        let expectedRemoteUrl = URL(string: "https://any_url.com")!
+        let expectedRemoteUrl = fakeURL()
         let (sut, httpClientSpy) = createSUT(url: expectedRemoteUrl)
         
         //act
         let _ = await sut.handle(input: fakeAddAccountInputValid())
         
         //asset
-        XCTAssertEqual([expectedRemoteUrl], httpClientSpy.urls)
+        expect(
+            should: [expectedRemoteUrl],
+            beEqual: httpClientSpy.urls)
     }
     
     func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectData() async{
@@ -25,83 +27,94 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         let _ = await sut.handle(input: input)
         
         //asset
-        XCTAssertEqual(expectedContent, httpClientSpy.inputData)
+        expect(
+            should: httpClientSpy.inputData,
+            beEqual: expectedContent)
     }
     
     func test_givenAddAccount_whenNoConnectivityFailsHttpPostClient_thenMustBeReturnResultUnexpectedError() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        httpClientSpy.setupResult(result: .noConnectivity)
+        httpClientSpy.result(with: .failure(.noConnectivity))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
-       
+        
         //asset
-        XCTAssertEqual(Result.failure(.unexpected), result)
+        expect(
+            should: result,
+            beEqual: .failure(DomainError.unexpected))
     }
     
-    func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultData() async {
+    func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultData() async{
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        let expectedAccountOutput = createAddAccountOutput();
-        httpClientSpy.setupResult(result: expectedAccountOutput.toData()!)
+        let expectedAccountOutput = fakeAddAccountOutput();
+        httpClientSpy.result(with: .success(expectedAccountOutput.toData()!))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
-       
+        
         //asset
-        XCTAssertEqual(Result.success(expectedAccountOutput), result)
+        expect(
+            should: result,
+            beEqual: .success(expectedAccountOutput)
+        )
     }
     
     func test_givenAddAccount_whenInvalidDataFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        httpClientSpy.setupResult(result: Data("invalid_data".utf8))
+        httpClientSpy.result(with: .success(fakeInvalidData()))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
-       
+        
         //asset
-        XCTAssertEqual(Result.failure(DomainError.unexpected), result)
+        expect(
+            should: result,
+            beEqual: .failure(DomainError.unexpected))
     }
 }
 
 extension RemoteAddAccountUseCaseTests {
-    
     func fakeAddAccountInputValid() -> AddAccountInput{
-        return AddAccountInput(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
+        AddAccountInput(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
     }
     
-    func createAddAccountOutput() -> AddAccountOutput{
-        return AddAccountOutput(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
+    func fakeAddAccountOutput() -> AddAccountOutput{
+        AddAccountOutput(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
     }
-
+    
+    func fakeInvalidData() -> Data{
+        Data("invalid_data".utf8)
+    }
+    
+    func fakeURL() -> URL{
+        URL(string: "https://any_url.com")!
+    }
+    
     func createSUT(url: URL = URL(string: "https://any_url.com")!) -> (sut: RemoteAddAccountUseCase, httpClient: HttpClientSpy){
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccountUseCase(url: url, httpClient: httpClientSpy)
-
+        
         return (sut, httpClientSpy)
     }
     
     class HttpClientSpy: HttpPostClientProtocol{
         var urls = [URL]()
         var inputData: Data?
-        var callsCount: Int = 0
         var result: Result<Data, HttpError> = .failure(HttpError.noConnectivity)
         
-        func post(to url: URL, with content: Data?) async -> Result<Data, HttpError> {
+        func post(to url: URL, with data: Data?) async -> Result<Data, HttpError> {
             self.urls.append(url)
-            self.inputData = content
+            self.inputData = data
             
             return result
         }
-
-        func setupResult(result: HttpError){
-            self.result = .failure(result)
-        }
         
-        func setupResult(result: Data){
-            self.result = .success(result)
+        func result(with result: Result<Data, HttpError>){
+            self.result = result
         }
     }
 }
