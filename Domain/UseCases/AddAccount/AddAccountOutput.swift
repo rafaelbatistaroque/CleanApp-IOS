@@ -1,5 +1,5 @@
 import Foundation
-public struct AddAccountOutput : Equatable{
+public struct AddAccountOutput : DTOProtocol{
     public let id: String
     public let name: String
     public let email: String

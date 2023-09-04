@@ -37,7 +37,20 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         let result = await sut.handle(input: fakeAddAccountInputValid())
        
         //asset
-        XCTAssertEqual(.failure(.unexpected), result)
+        XCTAssertEqual(Result.failure(.unexpected), result)
+    }
+    
+    func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultUnexpectedData() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        let expectedAccountOutput = createAddAccountOutput();
+        httpClientSpy.setupResult(result: expectedAccountOutput.toData()!)
+        
+        //act
+        let result = await sut.handle(input: fakeAddAccountInputValid())
+       
+        //asset
+        XCTAssertEqual(Result.success(expectedAccountOutput), result)
     }
 }
 
@@ -47,6 +60,10 @@ extension RemoteAddAccountUseCaseTests {
         return AddAccountInput(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
     }
     
+    func createAddAccountOutput() -> AddAccountOutput{
+        return AddAccountOutput(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
+    }
+
     func createSUT(url: URL = URL(string: "https://any_url.com")!) -> (sut: RemoteAddAccountUseCase, httpClient: HttpClientSpy){
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccountUseCase(url: url, httpClient: httpClientSpy)
@@ -58,7 +75,7 @@ extension RemoteAddAccountUseCaseTests {
         var urls = [URL]()
         var inputData: Data?
         var callsCount: Int = 0
-        var result: Result<Data, HttpError> = .failure(HttpError.any)
+        var result: Result<Data, HttpError> = .failure(HttpError.noConnectivity)
         
         func post(to url: URL, with content: Data?) async -> Result<Data, HttpError> {
             self.urls.append(url)

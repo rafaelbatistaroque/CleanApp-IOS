@@ -12,12 +12,15 @@ final public class RemoteAddAccountUseCase : AddAccountProtocol {
     
     public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
         let result = await self.httpClient.post(to: self.url, with: input.toData())
-
+        
         switch result{
+        case .success(let data):
+            if let accountOutput: AddAccountOutput = data.toDTO(){
+                return .success(accountOutput)
+            }
+            return .failure(.unexpected)
         case .failure(.noConnectivity):
-            return .failure(DomainError.unexpected)
-        default:
-            return .failure(DomainError.unexpected)
+            return .failure(.unexpected)
         }
     }
 }
