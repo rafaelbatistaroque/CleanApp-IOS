@@ -2,11 +2,11 @@ import Foundation
 import Alamofire
 
 extension AlamofireAdapterTests {
-    func createSUT() -> (AlamofireAdapter, URL){
-        return (
-            AlamofireAdapter(
-            session: Session(configuration: createSessionConfiguration())),
-            fakeURL())
+    func createSUT(file: StaticString = #filePath, line: UInt = #line) -> (AlamofireAdapter, URL){
+        let sut = AlamofireAdapter(session: Session(configuration: createSessionConfiguration()))
+        checkMemoryLeak(for: sut, file: file, line: line)
+        
+        return (sut, fakeURL())
     }
     
     private func createSessionConfiguration() -> URLSessionConfiguration{
