@@ -11,7 +11,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //act
         let _ = await sut.handle(input: fakeAddAccountInputValid())
         
-        //asset
+        //assert
         expect(
             should: [expectedRemoteUrl],
             beEqual: httpClientSpy.urls)
@@ -26,7 +26,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //act
         let _ = await sut.handle(input: input)
         
-        //asset
+        //assert
         expect(
             should: httpClientSpy.inputData,
             beEqual: expectedContent)
@@ -40,7 +40,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
         
-        //asset
+        //assert
         expect(
             should: result,
             beEqual: .failure(DomainError.unexpected))
@@ -55,7 +55,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
         
-        //asset
+        //assert
         expect(
             should: result,
             beEqual: .success(expectedAccountOutput)
@@ -70,7 +70,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
         
-        //asset
+        //assert
         expect(
             should: result,
             beEqual: .failure(DomainError.unexpected))
@@ -94,11 +94,19 @@ extension RemoteAddAccountUseCaseTests {
         URL(string: "https://any_url.com")!
     }
     
-    func createSUT(url: URL = URL(string: "https://any_url.com")!) -> (sut: RemoteAddAccountUseCase, httpClient: HttpClientSpy){
+    func createSUT(url: URL = URL(string: "https://any_url.com")!, file: StaticString = #filePath, line: UInt = #line) -> (sut: RemoteAddAccountUseCase, httpClient: HttpClientSpy){
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccountUseCase(url: url, httpClient: httpClientSpy)
-        
+        checkMemoryLeak(for: sut, file: file, line: line)
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
+
         return (sut, httpClientSpy)
+    }
+    
+    func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line){
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line:line)
+        }
     }
     
     class HttpClientSpy: HttpPostClientProtocol{
