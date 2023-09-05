@@ -5,6 +5,10 @@ func fakeInvalidData() -> Data{
     Data("invalid_data".utf8)
 }
 
+func fakeValidData() -> Data{
+    Data("{\"name\":\"Rafael\"}".utf8)
+}
+
 func fakeURL() -> URL{
     URL(string: "https://any_url.com")!
 }

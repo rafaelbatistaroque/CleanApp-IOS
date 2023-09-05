@@ -8,20 +8,30 @@ class AlamofireAdapter{
         self.session = session
     }
     
-    func post(to url: URL) async -> Void {
-        _ = await self.session.request(url, method: .post).serializingString().response
+    func post(to url: URL, with data: Data? = nil) async -> Void {
+        let request = makeRequest(
+            url,
+            method: .post,
+            with: data,
+            headers: [.contentType("application/json")])
+
+        _ = await self.session.request(request).serializingString().response
+    }
+    
+    private func makeRequest(_ url: URL, method verb: HTTPMethod = .get, with data: Data?, headers: [HTTPHeader] = []) -> URLRequest {
+        var httpRequest = URLRequest(url: url)
+        httpRequest.httpBody = data
+        httpRequest.method = verb
+        httpRequest.headers = HTTPHeaders(headers)
+
+        return httpRequest
     }
 }
 
 final class AlamofireAdapterTests: XCTestCase {
     func test_givenAlamofireAdapterRequest_whenPost_thenEnsureCallsWithCorrectUrl() async{
         //arrange
-        let url = fakeURL()
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [UrlProtocolStub.self]
-        configuration.timeoutIntervalForRequest = TimeInterval(0.1)
-        let session = Session(configuration: configuration)
-        let sut = AlamofireAdapter(session: session);
+        let (sut, url) = createSUT()
         
         //act
         await sut.post(to: url)
@@ -34,12 +44,7 @@ final class AlamofireAdapterTests: XCTestCase {
     
     func test_givenAlamofireAdapterRequest_whenPost_thenEnsureCallsWithCorrectVerb() async{
         //arrange
-        let url = fakeURL()
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [UrlProtocolStub.self]
-        configuration.timeoutIntervalForRequest = TimeInterval(0.1)
-        let session = Session(configuration: configuration)
-        let sut = AlamofireAdapter(session: session);
+        let (sut, url) = createSUT()
         
         //act
         await sut.post(to: url)
@@ -48,6 +53,30 @@ final class AlamofireAdapterTests: XCTestCase {
         expect(
             should: UrlProtocolStub.request?.method,
             beEqual: HTTPMethod.post)
+    }
+    
+    func test_givenAlamofireAdapterRequest_whenPost_thenEnsureCallsWithValidData() async{
+        //arrange
+        let (sut, url) = createSUT()
+        let validData = fakeValidData()
+        
+        //act
+        await sut.post(to: url, with: validData)
+
+        //assert
+        expect(shouldNotBeNil: UrlProtocolStub.request?.httpBodyStream)
+    }
+}
+
+extension AlamofireAdapterTests {
+    func createSUT() -> (AlamofireAdapter, URL){
+        
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [UrlProtocolStub.self]
+        configuration.timeoutIntervalForRequest = TimeInterval(0.1)
+        let session = Session(configuration: configuration)
+
+        return (AlamofireAdapter(session: session), fakeURL())
     }
 }
 
