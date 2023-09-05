@@ -9,7 +9,7 @@ class AlamofireAdapter{
     }
     
     func post(to url: URL) async -> Void {
-        _ = await self.session.request(url).serializingString().response
+        _ = await self.session.request(url, method: .post).serializingString().response
     }
 }
 
@@ -27,7 +27,27 @@ final class AlamofireAdapterTests: XCTestCase {
         await sut.post(to: url)
 
         //assert
-        expect(should: url, beEqual: UrlProtocolStub.request?.url)
+        expect(
+            should: UrlProtocolStub.request?.url,
+            beEqual: url)
+    }
+    
+    func test_givenAlamofireAdapterRequest_whenPost_thenEnsureCallsWithCorrectVerb() async{
+        //arrange
+        let url = fakeURL()
+        let configuration = URLSessionConfiguration.default
+        configuration.protocolClasses = [UrlProtocolStub.self]
+        configuration.timeoutIntervalForRequest = TimeInterval(0.1)
+        let session = Session(configuration: configuration)
+        let sut = AlamofireAdapter(session: session);
+        
+        //act
+        await sut.post(to: url)
+
+        //assert
+        expect(
+            should: UrlProtocolStub.request?.method,
+            beEqual: HTTPMethod.post)
     }
 }
 
