@@ -10,15 +10,14 @@ class AlamofireAdapter{
     
     func post(to url: URL, with data: Data? = nil) async -> Void {
         let request = makeRequest(
-            url,
+            to: url,
             method: .post,
-            with: data,
-            headers: [.contentType("application/json")])
+            with: data)
 
         _ = await self.session.request(request).serializingString().response
     }
     
-    private func makeRequest(_ url: URL, method verb: HTTPMethod = .get, with data: Data?, headers: [HTTPHeader] = []) -> URLRequest {
+    private func makeRequest(to url: URL, method verb: HTTPMethod = .get, with data: Data?, headers: [HTTPHeader] = []) -> URLRequest {
         var httpRequest = URLRequest(url: url)
         httpRequest.httpBody = data
         httpRequest.method = verb
@@ -55,7 +54,7 @@ final class AlamofireAdapterTests: XCTestCase {
             beEqual: HTTPMethod.post)
     }
     
-    func test_givenAlamofireAdapterRequest_whenPost_thenEnsureCallsWithValidData() async{
+    func test_givenAlamofireAdapterRequest_whenPostWithBody_thenEnsureCallsWithValidData() async{
         //arrange
         let (sut, url) = createSUT()
         let validData = fakeValidData()
@@ -64,7 +63,20 @@ final class AlamofireAdapterTests: XCTestCase {
         await sut.post(to: url, with: validData)
 
         //assert
-        expect(shouldNotBeNil: UrlProtocolStub.request?.httpBodyStream)
+        expect(
+            shouldNotBeNil: UrlProtocolStub.request?.httpBodyStream)
+    }
+    
+    func test_givenAlamofireAdapterRequest_whenPostWithoutBody_thenEnsureCallsWithEmptyData() async{
+        //arrange
+        let (sut, url) = createSUT()
+        
+        //act
+        await sut.post(to: url, with: nil)
+
+        //assert
+        expect(
+            shouldBeNil: UrlProtocolStub.request?.httpBodyStream)
     }
 }
 
