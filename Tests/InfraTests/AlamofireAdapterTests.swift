@@ -79,33 +79,3 @@ final class AlamofireAdapterTests: XCTestCase {
             shouldBeNil: UrlProtocolStub.request?.httpBodyStream)
     }
 }
-
-extension AlamofireAdapterTests {
-    func createSUT() -> (AlamofireAdapter, URL){
-        
-        let configuration = URLSessionConfiguration.default
-        configuration.protocolClasses = [UrlProtocolStub.self]
-        configuration.timeoutIntervalForRequest = TimeInterval(0.1)
-        let session = Session(configuration: configuration)
-
-        return (AlamofireAdapter(session: session), fakeURL())
-    }
-}
-
-class UrlProtocolStub: URLProtocol{
-    static var request: URLRequest?
-
-    override open class func canInit(with request: URLRequest) -> Bool {
-        true
-    }
-    
-    override open class func canonicalRequest(for request: URLRequest) -> URLRequest {
-        request
-    }
-    
-    override open func startLoading() {
-        UrlProtocolStub.request = request
-    }
-    
-    override open func stopLoading() {}
-}
