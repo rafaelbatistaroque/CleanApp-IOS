@@ -5,6 +5,10 @@ func fakeInvalidData() -> Data{
     Data("invalid_data".utf8)
 }
 
+func fakeEmptyData() -> Data {
+    Data()
+}
+
 func fakeValidData() -> Data{
     Data("{\"name\":\"Rafael\"}".utf8)
 }

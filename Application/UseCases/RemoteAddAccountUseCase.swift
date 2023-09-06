@@ -17,9 +17,11 @@ final public class RemoteAddAccountUseCase : AddAccountProtocol {
         case .failure(.noConnectivity):
             return .failure(.unexpected)
         case .success(let data):
-            if let accountOutput: AddAccountOutput = data.toDTO(){
+            if let accountOutput: AddAccountOutput = data?.toDTO(){
                 return .success(accountOutput)
             }
+            return .failure(.unexpected)
+        default:
             return .failure(.unexpected)
         }
     }
