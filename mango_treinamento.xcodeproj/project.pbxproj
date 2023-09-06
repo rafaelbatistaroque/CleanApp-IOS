@@ -120,6 +120,7 @@
 		53A449FF2A991012007DF156 /* AddAccountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountProtocol.swift; sourceTree = "<group>"; };
 		53CAF4012AA8DC2D00C293D6 /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CAF4152AA8DCA000C293D6 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53CAF4252AA8E19C00C293D6 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; name = CI.xctestplan; path = Tests/CI.xctestplan; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +183,7 @@
 				531132C02AA7E95000F4B101 /* Helpers */,
 				531132BD2AA7E8FF00F4B101 /* Extensions */,
 				531132A42AA7907700F4B101 /* AlamofireAdapterTests.swift */,
+				53CAF4252AA8E19C00C293D6 /* CI.xctestplan */,
 			);
 			path = InfraTests;
 			sourceTree = "<group>";

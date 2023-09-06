@@ -129,9 +129,9 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: nil, response: fakeUrlResponse(withStatusCode: 204), error: nil, expectedResult: .success(nil)),
-                (data: fakeEmptyData(), response: fakeUrlResponse(withStatusCode: 204), error: nil, expectedResult: .success(nil)),
-                (data: fakeValidData(), response: fakeUrlResponse(withStatusCode: 204), error: nil, expectedResult: .success(nil)),
+                (data: nil, response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
+                (data: fakeEmptyData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
             ])
         
         for testCase in testCases {
@@ -147,15 +147,16 @@ final class AlamofireAdapterTests: XCTestCase {
         }
     }
     
-    func test_givenAlamofireAdapterRequest_whenPostStatusCodeNo200_thenEnsureResponseWithError() async {
+    func test_givenAlamofireAdapterRequest_whenPostStatusCodeNon200_thenEnsureResponseWithError() async {
         //arrange
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: fakeValidData(), response: fakeUrlResponse(withStatusCode: 400), error: nil, expectedResult: .failure(.badRequest)),
-                (data: fakeValidData(), response: fakeUrlResponse(withStatusCode: 401), error: nil, expectedResult: .failure(.unauthorized)),
-                (data: fakeValidData(), response: fakeUrlResponse(withStatusCode: 403), error: nil, expectedResult: .failure(.forbidden)),
-                (data: fakeValidData(), response: fakeUrlResponse(withStatusCode: 500), error: nil, expectedResult: .failure(.serverError)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 400), error: nil, expectedResult: .failure(.badRequest)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 401), error: nil, expectedResult: .failure(.unauthorized)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 403), error: nil, expectedResult: .failure(.forbidden)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 500), error: nil, expectedResult: .failure(.serverError)),
+                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 300), error: nil, expectedResult: .failure(.noConnectivity)),
             ])
         
         for testCase in testCases {

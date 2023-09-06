@@ -13,7 +13,7 @@ class HttpClientSpy: HttpPostClientProtocol{
         return result
     }
     
-    func result(with result: Result<Data?, HttpError>){
+    func resultDefined(with result: Result<Data?, HttpError>){
         self.result = result
     }
 }

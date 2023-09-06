@@ -35,7 +35,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenNoConnectivityFailsHttpPostClient_thenMustBeReturnResultUnexpectedError() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        httpClientSpy.result(with: .failure(.noConnectivity))
+        httpClientSpy.resultDefined(with: .failure(.noConnectivity))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
@@ -50,7 +50,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //arrange
         let (sut, httpClientSpy) = createSUT()
         let expectedAccountOutput = fakeAddAccountOutput();
-        httpClientSpy.result(with: .success(expectedAccountOutput.toData()!))
+        httpClientSpy.resultDefined(with: .success(expectedAccountOutput.toData()!))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
@@ -65,11 +65,25 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenInvalidDataFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        httpClientSpy.result(with: .success(fakeInvalidData()))
+        httpClientSpy.resultDefined(with: .success(fakeInvalidData()))
         
         //act
         let result = await sut.handle(input: fakeAddAccountInputValid())
         
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(DomainError.unexpected))
+    }
+
+    func test_givenAddAccount_whenAnythingErrorFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.resultDefined(with: .failure(.badRequest))
+
+        //act
+        let result = await sut.handle(input: fakeAddAccountInputValid())
+
         //assert
         expect(
             should: result,
