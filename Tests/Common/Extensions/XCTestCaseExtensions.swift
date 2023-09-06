@@ -6,6 +6,10 @@ extension XCTestCase {
         XCTAssertEqual(value, expectedValue, file: file, line: line)
     }
     
+    func expect<T:Equatable>(should value:T, notBeEqual expectedValue:T, file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertNotEqual(value, expectedValue, file: file, line: line)
+    }
+    
     func expect<T>(shouldNotBeNil expectedValue:T?, file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertNotNil(expectedValue, file: file, line: line)
     }

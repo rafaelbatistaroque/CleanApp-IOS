@@ -1,4 +1,5 @@
 import XCTest
+import Application
 import Alamofire
 
 class AlamofireAdapter{
@@ -8,16 +9,25 @@ class AlamofireAdapter{
         self.session = session
     }
     
-    func post(to url: URL, with data: Data? = nil) async -> Void {
-        let request = makeRequest(
+    func post(to url: URL, with data: Data? = nil) async -> Result<Data, HttpError> {
+        let request = makeURLRequest(
             to: url,
             method: .post,
             with: data)
 
-        _ = await self.session.request(request).serializingString().response
+        let response = await self.session.request(request).serializingData().response
+        
+        switch response.result {
+        case .failure:
+            return .failure(.noConnectivity)
+        case .success:
+            return .success(Data())
+        }
     }
-    
-    private func makeRequest(to url: URL, method verb: HTTPMethod = .get, with data: Data?, headers: [HTTPHeader] = []) -> URLRequest {
+}
+
+extension AlamofireAdapter {
+    func makeURLRequest(to url: URL, method verb: HTTPMethod = .get, with data: Data?, headers: [HTTPHeader] = []) -> URLRequest {
         var httpRequest = URLRequest(url: url)
         httpRequest.httpBody = data
         httpRequest.method = verb
@@ -33,7 +43,7 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         
         //act
-        await sut.post(to: url)
+        _ = await sut.post(to: url)
 
         //assert
         expect(
@@ -46,7 +56,7 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         
         //act
-        await sut.post(to: url)
+        _ = await sut.post(to: url)
 
         //assert
         expect(
@@ -60,7 +70,7 @@ final class AlamofireAdapterTests: XCTestCase {
         let validData = fakeValidData()
         
         //act
-        await sut.post(to: url, with: validData)
+        _ = await sut.post(to: url, with: validData)
 
         //assert
         expect(
@@ -72,10 +82,24 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         
         //act
-        await sut.post(to: url, with: nil)
+        _ = await sut.post(to: url, with: nil)
 
         //assert
         expect(
             shouldBeNil: UrlProtocolStub.request?.httpBodyStream)
+    }
+    
+    func test_givenAlamofireAdapterRequest_whenPostWithError_thenEnsureResponseWithError() async{
+        //arrange
+        let (sut, url) = createSUT()
+        UrlProtocolStub.simulate(data: nil, response: nil, error: fakeError())
+        
+        //act
+        let result = await sut.post(to: url, with: fakeValidData())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(.noConnectivity))
     }
 }

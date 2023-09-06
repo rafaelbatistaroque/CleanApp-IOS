@@ -16,3 +16,7 @@ func fakeURL() -> URL{
 func fakeAddAccountOutput() -> AddAccountOutput{
     AddAccountOutput(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
 }
+
+func fakeError() -> Error {
+    NSError(domain: "any_error", code: 0)
+}
