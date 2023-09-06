@@ -31,6 +31,8 @@ class UrlProtocolStub: URLProtocol{
         if let error = error {
             client?.urlProtocol(self, didFailWithError: error)
         }
+        
+        client?.urlProtocolDidFinishLoading(self)
     }
     
     override open func stopLoading() {}

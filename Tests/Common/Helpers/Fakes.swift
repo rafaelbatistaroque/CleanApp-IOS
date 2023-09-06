@@ -20,3 +20,7 @@ func fakeAddAccountOutput() -> AddAccountOutput{
 func fakeError() -> Error {
     NSError(domain: "any_error", code: 0)
 }
+
+func fakeUrlResponse(withStatusCode statusCode:Int = 200) -> HTTPURLResponse{
+    HTTPURLResponse(url: fakeURL(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+}

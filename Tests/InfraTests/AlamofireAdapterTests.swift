@@ -14,14 +14,18 @@ class AlamofireAdapter{
             to: url,
             method: .post,
             with: data)
-
-        let response = await self.session.request(request).serializingData().response
         
-        switch response.result {
+        let responseData = await self.session.request(request).serializingData().response
+        
+        guard responseData.response?.statusCode != nil else {
+            return .failure(.noConnectivity)
+        }
+        
+        switch responseData.result {
         case .failure:
             return .failure(.noConnectivity)
-        case .success:
-            return .success(Data())
+        case .success(let data):
+            return .success(data)
         }
     }
 }
@@ -32,7 +36,7 @@ extension AlamofireAdapter {
         httpRequest.httpBody = data
         httpRequest.method = verb
         httpRequest.headers = HTTPHeaders(headers)
-
+        
         return httpRequest
     }
 }
@@ -44,7 +48,7 @@ final class AlamofireAdapterTests: XCTestCase {
         
         //act
         _ = await sut.post(to: url)
-
+        
         //assert
         expect(
             should: UrlProtocolStub.request?.url,
@@ -57,7 +61,7 @@ final class AlamofireAdapterTests: XCTestCase {
         
         //act
         _ = await sut.post(to: url)
-
+        
         //assert
         expect(
             should: UrlProtocolStub.request?.method,
@@ -71,7 +75,7 @@ final class AlamofireAdapterTests: XCTestCase {
         
         //act
         _ = await sut.post(to: url, with: validData)
-
+        
         //assert
         expect(
             shouldNotBeNil: UrlProtocolStub.request?.httpBodyStream)
@@ -83,23 +87,60 @@ final class AlamofireAdapterTests: XCTestCase {
         
         //act
         _ = await sut.post(to: url, with: nil)
-
+        
         //assert
         expect(
             shouldBeNil: UrlProtocolStub.request?.httpBodyStream)
     }
     
-    func test_givenAlamofireAdapterRequest_whenPostWithError_thenEnsureResponseWithError() async{
+    func test_givenAlamofireAdapterRequest_whenPostWithError_thenEnsureResponseWithError() async {
         //arrange
         let (sut, url) = createSUT()
-        UrlProtocolStub.simulate(data: nil, response: nil, error: fakeError())
+        let caseTests = createCaseTestsList(
+            withExpectedConditions: [(
+                data: nil,
+                response: nil,
+                error: fakeError(),
+                expectedResult: .failure(.noConnectivity))])
         
-        //act
-        let result = await sut.post(to: url, with: fakeValidData())
-
-        //assert
-        expect(
-            should: result,
-            beEqual: .failure(.noConnectivity))
+        for item in caseTests {
+            UrlProtocolStub.simulate(data: item.data, response: item.response, error: item.error)
+            
+            //act
+            let result = await sut.post(to: url, with: fakeValidData())
+            
+            //assert
+            expect(
+                should: result,
+                beEqual: item.expectedResult)
+        }
+    
+    }
+    
+    func test_givenAlamofireAdapterRequest_whenPostWithInvalidCases_thenEnsureResponseWithSpecificError() async {
+        //arrange
+        let (sut, url) = createSUT()
+        let caseTests = createCaseTestsList(
+            withExpectedConditions: [
+                (data: fakeValidData(), response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (data: fakeValidData(), response: nil, error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (data: fakeValidData(), response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
+                (data: nil, response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (data: nil, response: fakeUrlResponse(), error: nil, expectedResult: .failure(.noConnectivity)),
+                (data: nil, response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
+            ])
+        
+        for item in caseTests {
+            UrlProtocolStub.simulate(data: item.data, response: item.response, error: item.error)
+            
+            //act
+            let result = await sut.post(to: url, with: fakeValidData())
+            
+            //assert
+            expect(
+                should: result,
+                beEqual: item.expectedResult)
+        }
+    
     }
 }
