@@ -18,6 +18,8 @@
 		531132C32AA7EA2D00F4B101 /* AlamofireAdapterTestsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531132BE2AA7E92000F4B101 /* AlamofireAdapterTestsExtension.swift */; };
 		531132C42AA7EA3000F4B101 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531132C12AA7E96100F4B101 /* UrlProtocolStub.swift */; };
 		531132C62AA7F38400F4B101 /* AlamofireAdapterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531132C52AA7F38400F4B101 /* AlamofireAdapterExtensions.swift */; };
+		53414E8E2AA82198005E01DD /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53414E8D2AA82198005E01DD /* AlamofireAdapter.swift */; };
+		53414E8F2AA8229B005E01DD /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531132C12AA7E96100F4B101 /* UrlProtocolStub.swift */; };
 		5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595D2AA52058008AE97C /* AddAccountInput.swift */; };
 		535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595F2AA5206B008AE97C /* AddAccountOutput.swift */; };
 		5358598A2AA52203008AE97C /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535859822AA52202008AE97C /* Application.framework */; };
@@ -100,6 +102,7 @@
 		531132BE2AA7E92000F4B101 /* AlamofireAdapterTestsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterTestsExtension.swift; sourceTree = "<group>"; };
 		531132C12AA7E96100F4B101 /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		531132C52AA7F38400F4B101 /* AlamofireAdapterExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterExtensions.swift; sourceTree = "<group>"; };
+		53414E8D2AA82198005E01DD /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		5358595D2AA52058008AE97C /* AddAccountInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountInput.swift; sourceTree = "<group>"; };
 		5358595F2AA5206B008AE97C /* AddAccountOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountOutput.swift; sourceTree = "<group>"; };
 		535859822AA52202008AE97C /* Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -167,7 +170,8 @@
 		531132992AA7907600F4B101 /* Infra */ = {
 			isa = PBXGroup;
 			children = (
-				531132C52AA7F38400F4B101 /* AlamofireAdapterExtensions.swift */,
+				53414E8C2AA8217A005E01DD /* Extensions */,
+				53414E8D2AA82198005E01DD /* AlamofireAdapter.swift */,
 			);
 			path = Infra;
 			sourceTree = "<group>";
@@ -204,6 +208,7 @@
 		531132B52AA7926200F4B101 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				531132C12AA7E96100F4B101 /* UrlProtocolStub.swift */,
 				536037DF2AA6B17700004917 /* Fakes.swift */,
 			);
 			path = Helpers;
@@ -228,9 +233,16 @@
 		531132C02AA7E95000F4B101 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				531132C12AA7E96100F4B101 /* UrlProtocolStub.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		53414E8C2AA8217A005E01DD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				531132C52AA7F38400F4B101 /* AlamofireAdapterExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		5358595C2AA5203B008AE97C /* AddAccount */ = {
@@ -602,6 +614,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53414E8E2AA82198005E01DD /* AlamofireAdapter.swift in Sources */,
 				531132C62AA7F38400F4B101 /* AlamofireAdapterExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +648,7 @@
 				5358598F2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift in Sources */,
 				536037DD2AA6969300004917 /* XCTestCaseExtensions.swift in Sources */,
 				536037E42AA6B2DE00004917 /* RemoteAddAccountUseCaseTestsExtensions.swift in Sources */,
+				53414E8F2AA8229B005E01DD /* UrlProtocolStub.swift in Sources */,
 				536037E22AA6B1BB00004917 /* HttpClientSpy.swift in Sources */,
 				536037E02AA6B17700004917 /* Fakes.swift in Sources */,
 			);

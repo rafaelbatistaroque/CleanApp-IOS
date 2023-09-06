@@ -4,7 +4,7 @@ class UrlProtocolStub: URLProtocol{
     static var request: URLRequest?
     static var response: (data: Data?, response: HTTPURLResponse?, error: Error?)
 
-    static func simulate(data: Data?, response: HTTPURLResponse?, error: Error?){
+    static func simulateResponse(data: Data?, response: HTTPURLResponse?, error: Error?){
         UrlProtocolStub.response = (data, response, error)
     }
     

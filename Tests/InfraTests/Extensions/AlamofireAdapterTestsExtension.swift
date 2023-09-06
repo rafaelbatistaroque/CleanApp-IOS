@@ -1,9 +1,10 @@
 import Foundation
+import Infra
 import Application
 import Alamofire
 
 extension AlamofireAdapterTests {
-    func createCaseTestsList(withExpectedConditions items:[(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)]) -> Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)> {
+    func createResponseTestCases(withConditions items:[(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)]) -> Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)> {
         Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)>(items)
     }
     
