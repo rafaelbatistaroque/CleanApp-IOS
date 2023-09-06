@@ -12,17 +12,22 @@
 		<key>ApplicationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>3</integer>
 		</dict>
 		<key>Domain.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>2</integer>
 		</dict>
 		<key>Infra.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>1</integer>
+		</dict>
+		<key>InfraTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
@@ -53,6 +58,16 @@
 			<true/>
 		</dict>
 		<key>536037F02AA6B46800004917</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53C9A7AB2AA8D8DF000F311C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53CAF4002AA8DC2D00C293D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
