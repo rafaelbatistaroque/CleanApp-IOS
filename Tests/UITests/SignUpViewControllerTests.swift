@@ -1,4 +1,5 @@
 import XCTest
+import Domain
 import UIKit
 @testable import UI
 
@@ -30,12 +31,43 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(shouldNotBeNil: sut as AlertViewProtocol)
     }
 
+    func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureCallsSignUp(){
+        //arrange
+        var callsCount = 0
+        let sut = createSUT(signUpSpy: { _ in
+            callsCount += 1
+        })
+        sut.loadViewIfNeeded()
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: callsCount, beEqual: 1)
+    }
+
 }
 
 extension SignUpViewControllerTests {
-    func createSUT() -> SignUpViewControllerTests {
+    func createSUT(signUpSpy: ((AddAccountInput)-> Void)? = nil) -> SignUpViewController {
         let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
+        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        sut.signUp = signUpSpy
 
-        return sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        return sut
+    }
+}
+
+extension UIControl {
+    func simulate(event: UIControl.Event){
+        self.allTargets.forEach { target in
+            self.actions(forTarget: target, forControlEvent: event)?.forEach { action in
+                (target as NSObject).perform(Selector(action))
+            }
+        }
+    }
+
+    func simulateTap(){
+        simulate(event: .touchUpInside)
     }
 }

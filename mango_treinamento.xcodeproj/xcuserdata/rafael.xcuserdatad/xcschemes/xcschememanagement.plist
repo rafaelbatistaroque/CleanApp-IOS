@@ -32,7 +32,7 @@
 		<key>InfraTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>7</integer>
 		</dict>
 		<key>Presentation.xcscheme_^#shared#^_</key>
 		<dict>
@@ -93,6 +93,11 @@
 			<true/>
 		</dict>
 		<key>53CAF4002AA8DC2D00C293D6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53CAF4142AA8DCA000C293D6</key>
 		<dict>
 			<key>primary</key>
 			<true/>
