@@ -5,8 +5,7 @@ import UIKit
 final class SignUpViewControllerTests: XCTestCase {
     func test_givenSignUpPage_whenStart_thenEnsureLoadingIsHidden(){
         //arrange
-        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        let sut = createSUT()
 
         //act
         sut.loadViewIfNeeded()
@@ -17,8 +16,7 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPage_whenInstanced_thenEnsureExtendsLoadingViewProtocol(){
         //arrange
-        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        let sut = createSUT()
 
         //act & assert
         expect(shouldNotBeNil: sut as LoadingViewProtocol)
@@ -26,11 +24,18 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPage_whenInstanced_thenEnsureExtendsAlertViewProtocol(){
         //arrange
-        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        let sut = createSUT()
 
         //act & assert
         expect(shouldNotBeNil: sut as AlertViewProtocol)
     }
 
+}
+
+extension SignUpViewControllerTests {
+    func createSUT() -> SignUpViewControllerTests {
+        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
+
+        return sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+    }
 }

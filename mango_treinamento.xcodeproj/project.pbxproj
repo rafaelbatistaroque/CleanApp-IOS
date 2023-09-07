@@ -359,6 +359,7 @@
 		53539AE52AAA43E100973A35 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				5368021F2AAA88D60003EC62 /* Extensions */,
 				53539AE62AAA43E100973A35 /* SignUpViewControllerTests.swift */,
 			);
 			path = UITests;
@@ -481,6 +482,13 @@
 				536037E12AA6B1BB00004917 /* HttpClientSpy.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		5368021F2AAA88D60003EC62 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		53A449DF2A990B4B007DF156 = {
