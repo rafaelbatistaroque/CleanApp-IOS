@@ -23,4 +23,14 @@ final class SignUpViewControllerTests: XCTestCase {
         //act & assert
         expect(shouldNotBeNil: sut as LoadingViewProtocol)
     }
+
+    func test_givenSignUpPage_whenInstanced_thenEnsureExtendsAlertViewProtocol(){
+        //arrange
+        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
+        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+
+        //act & assert
+        expect(shouldNotBeNil: sut as AlertViewProtocol)
+    }
+
 }

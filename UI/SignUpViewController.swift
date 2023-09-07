@@ -15,3 +15,10 @@ extension SignUpViewController: LoadingViewProtocol {
         : loadingIndicator?.stopAnimating()
     }
 }
+
+extension SignUpViewController: AlertViewProtocol {
+    func showMessage(viewModel: AlertViewModel) {
+        //TODO
+    }
+    
+}
