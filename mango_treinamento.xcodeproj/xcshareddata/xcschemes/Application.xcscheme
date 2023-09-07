@@ -34,7 +34,7 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "535859882AA52203008AE97C"
+               BlueprintIdentifier = "53CAF4002AA8DC2D00C293D6"
                BuildableName = "ApplicationTests.xctest"
                BlueprintName = "ApplicationTests"
                ReferencedContainer = "container:mango_treinamento.xcodeproj">
