@@ -22,6 +22,7 @@
 		53539AF92AAA4C5C00973A35 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53539AF82AAA4C5C00973A35 /* SignUp.storyboard */; };
 		53539AFA2AAA502800973A35 /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A449F82A990C8D007DF156 /* Domain.framework */; };
 		53539AFB2AAA502800973A35 /* Domain.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 53A449F82A990C8D007DF156 /* Domain.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		53539B012AAA540F00973A35 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53539B002AAA540F00973A35 /* LoadingView.swift */; };
 		5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595D2AA52058008AE97C /* AddAccountInput.swift */; };
 		535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358595F2AA5206B008AE97C /* AddAccountOutput.swift */; };
 		535859982AA523B1008AE97C /* Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A449F82A990C8D007DF156 /* Domain.framework */; };
@@ -167,6 +168,7 @@
 		53539AE62AAA43E100973A35 /* SignUpViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerTests.swift; sourceTree = "<group>"; };
 		53539AF22AAA4A1F00973A35 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		53539AF82AAA4C5C00973A35 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		53539B002AAA540F00973A35 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		5358595D2AA52058008AE97C /* AddAccountInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountInput.swift; sourceTree = "<group>"; };
 		5358595F2AA5206B008AE97C /* AddAccountOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountOutput.swift; sourceTree = "<group>"; };
 		535859822AA52202008AE97C /* Application.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Application.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +345,7 @@
 		53539ADB2AAA43E100973A35 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				53539AFF2AAA53FC00973A35 /* Components */,
 				53539AF22AAA4A1F00973A35 /* SignUpViewController.swift */,
 				53539AF82AAA4C5C00973A35 /* SignUp.storyboard */,
 			);
@@ -355,6 +358,14 @@
 				53539AE62AAA43E100973A35 /* SignUpViewControllerTests.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		53539AFF2AAA53FC00973A35 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				53539B002AAA540F00973A35 /* LoadingView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		5358595C2AA5203B008AE97C /* AddAccount */ = {
@@ -848,6 +859,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				53539AF32AAA4A1F00973A35 /* SignUpViewController.swift in Sources */,
+				53539B012AAA540F00973A35 /* LoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

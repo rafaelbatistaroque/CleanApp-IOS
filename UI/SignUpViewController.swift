@@ -7,3 +7,11 @@ final class SignUpViewController: UIViewController {
         super.viewDidLoad()
     }
 }
+
+extension SignUpViewController: LoadingViewProtocol {
+    func display(viewModel: LoadingViewModel) {
+        viewModel.isLoading
+        ? loadingIndicator?.startAnimating()
+        : loadingIndicator?.stopAnimating()
+    }
+}
