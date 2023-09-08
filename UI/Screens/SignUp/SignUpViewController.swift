@@ -13,7 +13,7 @@ final class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        saveButton?.layer.cornerRadius = 5
         configure()
     }
 
@@ -40,7 +40,9 @@ extension SignUpViewController: LoadingViewProtocol {
 
 extension SignUpViewController: AlertViewProtocol {
     func showMessage(viewModel: AlertViewModel) {
-        //TODO
+        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true)
     }
     
 }
