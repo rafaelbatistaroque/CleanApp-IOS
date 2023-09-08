@@ -45,35 +45,3 @@ final class SignUpViewControllerTests: XCTestCase {
     }
 
 }
-
-extension SignUpViewControllerTests {
-    func createSUT(signUpSpy: ((AddAccountInput)-> Void)? = nil) -> SignUpViewController {
-        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
-        sut.signUp = signUpSpy
-
-        return sut
-    }
-
-    func createAddAccountInputFromView(_ sut: SignUpViewController) -> AddAccountInput{
-        AddAccountInput(
-            name: sut.nameTextField?.text ?? "",
-            email: sut.emailTextField?.text ?? "",
-            password: sut.passwordTextField?.text ?? "",
-            passwordConfirmation: sut.passwordConfirmationTextField?.text ?? "")
-    }
-}
-
-extension UIControl {
-    func simulate(event: UIControl.Event){
-        self.allTargets.forEach { target in
-            self.actions(forTarget: target, forControlEvent: event)?.forEach { action in
-                (target as NSObject).perform(Selector(action))
-            }
-        }
-    }
-
-    func simulateTap(){
-        simulate(event: .touchUpInside)
-    }
-}
