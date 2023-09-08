@@ -13,36 +13,21 @@ final class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        saveButton?.layer.cornerRadius = 5
         configure()
     }
 
     private func configure(){
+        saveButton?.layer.cornerRadius = 5
         saveButton?.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+        hideKeyboardOnTap()
     }
 
     @objc private func saveButtonTapped(){
+        display(viewModel: LoadingViewModel(isLoading: true))
         signUp?(AddAccountInput(
             name: nameTextField?.text ?? "",
             email: emailTextField?.text ?? "",
             password: passwordTextField?.text ?? "",
             passwordConfirmation: passwordConfirmationTextField?.text ?? ""))
     }
-}
-
-extension SignUpViewController: LoadingViewProtocol {
-    func display(viewModel: LoadingViewModel) {
-        viewModel.isLoading
-        ? loadingIndicator?.startAnimating()
-        : loadingIndicator?.stopAnimating()
-    }
-}
-
-extension SignUpViewController: AlertViewProtocol {
-    func showMessage(viewModel: AlertViewModel) {
-        let alert = UIAlertController(title: viewModel.title, message: viewModel.message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        present(alert, animated: true)
-    }
-    
 }

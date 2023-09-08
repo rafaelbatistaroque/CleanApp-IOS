@@ -44,4 +44,16 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: addAccountInput, beEqual: createAddAccountInputFromView(sut))
     }
 
+    func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureDisableUserInterface(){
+        //arrange
+        let sut = createSUT(signUpSpy: nil)
+        sut.loadViewIfNeeded()
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: sut.view?.isUserInteractionEnabled, beEqual: false)
+    }
+
 }

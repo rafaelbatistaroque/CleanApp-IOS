@@ -40,6 +40,8 @@
 		536802312AAAA3D60003EC62 /* UIControlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5368022D2AAAA3D60003EC62 /* UIControlExtensions.swift */; };
 		536802382AAAA4420003EC62 /* SignUpViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536802342AAAA4420003EC62 /* SignUpViewControllerExtensions.swift */; };
 		53A44A002A991012007DF156 /* AddAccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53A449FF2A991012007DF156 /* AddAccountProtocol.swift */; };
+		53C67BE42AAB84AF000B1A6D /* SignUpViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C67BE32AAB84AF000B1A6D /* SignUpViewControllerExtensions.swift */; };
+		53C67BE62AAB84FA000B1A6D /* UIViewControllersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53C67BE52AAB84FA000B1A6D /* UIViewControllersExtensions.swift */; };
 		53CAF4052AA8DC2D00C293D6 /* Application.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 535859822AA52202008AE97C /* Application.framework */; };
 		53CAF40B2AA8DC5F00C293D6 /* RemoteAddAccountUseCaseTestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536037E32AA6B2DE00004917 /* RemoteAddAccountUseCaseTestsExtensions.swift */; };
 		53CAF40C2AA8DC6100C293D6 /* RemoteAddAccountUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358598E2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift */; };
@@ -192,6 +194,8 @@
 		536802342AAAA4420003EC62 /* SignUpViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerExtensions.swift; sourceTree = "<group>"; };
 		53A449F82A990C8D007DF156 /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		53A449FF2A991012007DF156 /* AddAccountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountProtocol.swift; sourceTree = "<group>"; };
+		53C67BE32AAB84AF000B1A6D /* SignUpViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerExtensions.swift; sourceTree = "<group>"; };
+		53C67BE52AAB84FA000B1A6D /* UIViewControllersExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllersExtensions.swift; sourceTree = "<group>"; };
 		53CAF4012AA8DC2D00C293D6 /* ApplicationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CAF4152AA8DCA000C293D6 /* InfraTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InfraTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53CAF4252AA8E19C00C293D6 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = CI.xctestplan; path = Tests/CI.xctestplan; sourceTree = SOURCE_ROOT; };
@@ -351,8 +355,9 @@
 		53539ADB2AAA43E100973A35 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				536802322AAAA3F50003EC62 /* Screens */,
+				53C67BE22AAB848B000B1A6D /* Extensions */,
 				53539AFF2AAA53FC00973A35 /* Components */,
+				536802322AAAA3F50003EC62 /* Screens */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -360,8 +365,8 @@
 		53539AE52AAA43E100973A35 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				53539AE62AAA43E100973A35 /* SignUpViewControllerTests.swift */,
 				5368021F2AAA88D60003EC62 /* Extensions */,
+				53539AE62AAA43E100973A35 /* SignUpViewControllerTests.swift */,
 			);
 			path = UITests;
 			sourceTree = "<group>";
@@ -548,6 +553,15 @@
 				5358599F2AA548CE008AE97C /* Aggregators */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		53C67BE22AAB848B000B1A6D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				53C67BE32AAB84AF000B1A6D /* SignUpViewControllerExtensions.swift */,
+				53C67BE52AAB84FA000B1A6D /* UIViewControllersExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		53CAF42B2AA8E97400C293D6 /* UseCasesIntegrationTests */ = {
@@ -893,8 +907,10 @@
 			files = (
 				5368021E2AAA81F70003EC62 /* ValidationProtocol.swift in Sources */,
 				53539AF32AAA4A1F00973A35 /* SignUpViewController.swift in Sources */,
+				53C67BE62AAB84FA000B1A6D /* UIViewControllersExtensions.swift in Sources */,
 				53539B012AAA540F00973A35 /* LoadingView.swift in Sources */,
 				5368021C2AAA81820003EC62 /* AlertView.swift in Sources */,
+				53C67BE42AAB84AF000B1A6D /* SignUpViewControllerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
