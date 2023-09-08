@@ -5,8 +5,7 @@ import UIKit
 
 extension SignUpViewControllerTests {
     func createSUT(signUpSpy: ((AddAccountInput)-> Void)? = nil) -> SignUpViewController {
-        let sb = UIStoryboard(name: "SignUp", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        let sut = SignUpViewController.instantiate()
         sut.signUp = signUpSpy
 
         return sut
