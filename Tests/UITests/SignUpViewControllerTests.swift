@@ -31,19 +31,17 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(shouldNotBeNil: sut as AlertViewProtocol)
     }
 
-    func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureCallsSignUp(){
+    func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureCallsSignUpWithCorrectAddAccountInput(){
         //arrange
-        var callsCount = 0
-        let sut = createSUT(signUpSpy: { _ in
-            callsCount += 1
-        })
+        var addAccountInput: AddAccountInput?
+        let sut = createSUT(signUpSpy: { addAccountInput = $0 })
         sut.loadViewIfNeeded()
 
         //act
         sut.saveButton?.simulateTap()
 
         //assert
-        expect(should: callsCount, beEqual: 1)
+        expect(should: addAccountInput, beEqual: createAddAccountInputFromView(sut))
     }
 
 }
@@ -55,6 +53,14 @@ extension SignUpViewControllerTests {
         sut.signUp = signUpSpy
 
         return sut
+    }
+
+    func createAddAccountInputFromView(_ sut: SignUpViewController) -> AddAccountInput{
+        AddAccountInput(
+            name: sut.nameTextField?.text ?? "",
+            email: sut.emailTextField?.text ?? "",
+            password: sut.passwordTextField?.text ?? "",
+            passwordConfirmation: sut.passwordConfirmationTextField?.text ?? "")
     }
 }
 

@@ -44,6 +44,11 @@
 			<key>orderHint</key>
 			<integer>6</integer>
 		</dict>
+		<key>UITests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
 		<key>UseCasesIntegrationTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -58,6 +63,16 @@
 			<true/>
 		</dict>
 		<key>5311329E2AA7907700F4B101</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53539AD92AAA43E100973A35</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>53539AE02AAA43E100973A35</key>
 		<dict>
 			<key>primary</key>
 			<true/>
