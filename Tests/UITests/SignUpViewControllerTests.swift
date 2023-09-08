@@ -6,7 +6,7 @@ import UIKit
 final class SignUpViewControllerTests: XCTestCase {
     func test_givenSignUpPage_whenStart_thenEnsureLoadingIsHidden(){
         //arrange
-        let sut = createSUT()
+        let (sut, _) = createSUT()
 
         //act
         sut.loadViewIfNeeded()
@@ -17,7 +17,7 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPage_whenInstanced_thenEnsureExtendsLoadingViewProtocol(){
         //arrange
-        let sut = createSUT()
+        let (sut, _) = createSUT()
 
         //act & assert
         expect(shouldNotBeNil: sut as LoadingViewProtocol)
@@ -25,7 +25,7 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPage_whenInstanced_thenEnsureExtendsAlertViewProtocol(){
         //arrange
-        let sut = createSUT()
+        let (sut, _) = createSUT()
 
         //act & assert
         expect(shouldNotBeNil: sut as AlertViewProtocol)
@@ -34,7 +34,7 @@ final class SignUpViewControllerTests: XCTestCase {
     func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureCallsSignUpWithCorrectAddAccountInput(){
         //arrange
         var addAccountInput: AddAccountInput?
-        let sut = createSUT(signUpSpy: { addAccountInput = $0 })
+        let (sut, _) = createSUT(signUpSpy: { addAccountInput = $0 })
         sut.loadViewIfNeeded()
 
         //act
@@ -46,7 +46,7 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPageWithKeyBoardingShown_whenOnTapSaveButton_thenEnsureDisableUserInterface(){
         //arrange
-        let sut = createSUT(signUpSpy: nil)
+        let (sut, _)  = createSUT()
         sut.loadViewIfNeeded()
 
         //act
@@ -58,10 +58,24 @@ final class SignUpViewControllerTests: XCTestCase {
 
     func test_givenSignUpPageAfterOnTapSaveButton_whenNameNotProvided_thenEnsureShowErrorMessage(){
         //arrange
-        let alertViewSpy = AlertViewSpy()
-        let expectedAlertViewModel = AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório")
-        let sut = createSUT(signUpSpy: nil, alertViewSpy: alertViewSpy)
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório")
+        let (sut, alertViewSpy) = createSUT()
         sut.loadViewIfNeeded()
+        fillSignUpField(of: sut, name: nil)
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
+    }
+
+    func test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage() throws{
+        //arrange
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Email é obrigatório")
+        let (sut, alertViewSpy) = createSUT()
+        sut.loadViewIfNeeded()
+        fillSignUpField(of: sut, name: "any_name", email: nil)
 
         //act
         sut.saveButton?.simulateTap()

@@ -4,12 +4,20 @@ import UIKit
 @testable import UI
 
 extension SignUpViewControllerTests {
-    func createSUT(signUpSpy: ((AddAccountInput)-> Void)? = nil, alertViewSpy: AlertViewProtocol? = nil) -> SignUpViewController {
+    func createSUT(signUpSpy: ((AddAccountInput)-> Void)? = nil) -> (SignUpViewController, AlertViewSpy) {
         let sut = SignUpViewController.instantiate()
+        let alertViewSpy = AlertViewSpy()
         sut.signUp = signUpSpy
         sut.alertView = alertViewSpy
 
-        return sut
+        return (sut, alertViewSpy)
+    }
+
+    func fillSignUpField(of sut:SignUpViewController, name:String? = nil, email:String? = nil, password:String? = nil, passwordConfirmation:String? = nil){
+        sut.nameTextField?.text = name
+        sut.emailTextField?.text = email
+        sut.passwordTextField?.text = password
+        sut.passwordConfirmationTextField?.text = passwordConfirmation
     }
 
     func createAddAccountInputFromView(_ sut: SignUpViewController) -> AddAccountInput{
