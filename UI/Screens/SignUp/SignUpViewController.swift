@@ -10,6 +10,7 @@ final class SignUpViewController: UIViewController, Storyboarded {
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
 
     var signUp: ((AddAccountInput) -> Void)?
+    var alertView: AlertViewProtocol?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +25,9 @@ final class SignUpViewController: UIViewController, Storyboarded {
 
     @objc private func saveButtonTapped(){
         display(viewModel: LoadingViewModel(isLoading: true))
+        if (nameTextField?.hasText == false) {
+            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório"))
+        }
         signUp?(AddAccountInput(
             name: nameTextField?.text ?? "",
             email: emailTextField?.text ?? "",

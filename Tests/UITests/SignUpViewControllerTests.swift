@@ -44,7 +44,7 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: addAccountInput, beEqual: createAddAccountInputFromView(sut))
     }
 
-    func test_givenSignUpPage_whenOnTapSaveButton_thenEnsureDisableUserInterface(){
+    func test_givenSignUpPageWithKeyBoardingShown_whenOnTapSaveButton_thenEnsureDisableUserInterface(){
         //arrange
         let sut = createSUT(signUpSpy: nil)
         sut.loadViewIfNeeded()
@@ -54,6 +54,20 @@ final class SignUpViewControllerTests: XCTestCase {
 
         //assert
         expect(should: sut.view?.isUserInteractionEnabled, beEqual: false)
+    }
+
+    func test_givenSignUpPageAfterOnTapSaveButton_whenNameNotProvided_thenEnsureShowErrorMessage(){
+        //arrange
+        let alertViewSpy = AlertViewSpy()
+        let expectedAlertViewModel = AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório")
+        let sut = createSUT(signUpSpy: nil, alertViewSpy: alertViewSpy)
+        sut.loadViewIfNeeded()
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
     }
 
 }
