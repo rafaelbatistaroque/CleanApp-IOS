@@ -70,7 +70,7 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
     }
 
-    func test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage() throws{
+    func test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage(){
         //arrange
         let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Email é obrigatório")
         let (sut, alertViewSpy) = createSUT()
@@ -84,12 +84,26 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
     }
 
-    func test_givenSignUpPageAfterOnTapSaveButton_whenPasswordNotProvided_thenEnsureShowErrorMessage() throws{
+    func test_givenSignUpPageAfterOnTapSaveButton_whenPasswordNotProvided_thenEnsureShowErrorMessage(){
         //arrange
-        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Password é obrigatório")
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Senha é obrigatório")
         let (sut, alertViewSpy) = createSUT()
         sut.loadViewIfNeeded()
         fillSignUpField(of: sut, name: "any_name", email: "any_email", password: nil)
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
+    }
+
+    func test_givenSignUpPageAfterOnTapSaveButton_whenPasswordConfirmationNotProvided_thenEnsureShowErrorMessage(){
+        //arrange
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Confirmar de Senha é obrigatório")
+        let (sut, alertViewSpy) = createSUT()
+        sut.loadViewIfNeeded()
+        fillSignUpField(of: sut, name: "any_name", email: "any_email", password: "enay_password", passwordConfirmation: nil)
 
         //act
         sut.saveButton?.simulateTap()
