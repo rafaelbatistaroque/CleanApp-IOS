@@ -29,10 +29,10 @@ final class SignUpViewController: UIViewController, Storyboarded {
             alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: errorMessage))
         }
         signUp?(AddAccountInput(
-            name: nameTextField?.text ?? "",
-            email: emailTextField?.text ?? "",
-            password: passwordTextField?.text ?? "",
-            passwordConfirmation: passwordConfirmationTextField?.text ?? ""))
+            name: nameTextField?.text,
+            email: emailTextField?.text,
+            password: passwordTextField?.text,
+            passwordConfirmation: passwordConfirmationTextField?.text))
     }
 
     private func validate() -> String?{
@@ -45,8 +45,11 @@ final class SignUpViewController: UIViewController, Storyboarded {
         if(isNullOrEmpty(field: passwordTextField)){
             return "O campo Senha é obrigatório"
         }
-        if (isNullOrEmpty(field: passwordConfirmationTextField)){
+        if isNullOrEmpty(field: passwordConfirmationTextField){
             return "O campo Confirmar de Senha é obrigatório"
+        }
+        if isNotEquals(field: passwordTextField, anotherField: passwordConfirmationTextField) {
+            return "Os campos Senha e Confirmar Senha não são iguais"
         }
 
         return nil
@@ -54,5 +57,9 @@ final class SignUpViewController: UIViewController, Storyboarded {
 
     private func isNullOrEmpty(field:UITextField!) -> Bool{
         field.hasText == false || field.text?.isEmpty == true
+    }
+
+    private func isNotEquals(field:UITextField!, anotherField:UITextField!) -> Bool {
+        passwordTextField != passwordConfirmationTextField
     }
 }

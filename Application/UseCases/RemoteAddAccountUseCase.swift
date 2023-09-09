@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-final public class RemoteAddAccountUseCase : AddAccountProtocol {
+final public class RemoteAddAccountUseCase: AddAccountProtocol {
     private let url: URL
     private let httpClient: HttpPostClientProtocol
     

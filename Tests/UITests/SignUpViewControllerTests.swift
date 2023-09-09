@@ -112,4 +112,19 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
     }
 
+    func test_givenSignUpPageAfterOnTapSaveButton_whenPasswordAndPasswordConfirmationNotMatch_thenEnsureShowErrorMessage(){
+        //arrange
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "Os campos Senha e Confirmar Senha não são iguais")
+        let (sut, alertViewSpy) = createSUT()
+        sut.loadViewIfNeeded()
+        fillSignUpField(of: sut, name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "another_any_password")
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
+    }
+
+
 }
