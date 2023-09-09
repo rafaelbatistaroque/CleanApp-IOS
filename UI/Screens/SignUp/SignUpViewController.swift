@@ -25,20 +25,34 @@ final class SignUpViewController: UIViewController, Storyboarded {
 
     @objc private func saveButtonTapped(){
         display(viewModel: LoadingViewModel(isLoading: true))
-        if (nameTextField.hasText == false || nameTextField?.text?.isEmpty == true) {
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório"))
-        }else if(emailTextField.hasText == false || emailTextField?.text?.isEmpty == true){
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Email é obrigatório"))
-        }else if(passwordTextField.hasText == false || passwordTextField.text?.isEmpty == true){
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Senha é obrigatório"))
-        }else if (passwordConfirmationTextField.hasText == false || passwordConfirmationTextField.text?.isEmpty == true){
-            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Confirmar de Senha é obrigatório"))
+        if let errorMessage = validate(){
+            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: errorMessage))
         }
-
         signUp?(AddAccountInput(
             name: nameTextField?.text ?? "",
             email: emailTextField?.text ?? "",
             password: passwordTextField?.text ?? "",
             passwordConfirmation: passwordConfirmationTextField?.text ?? ""))
+    }
+
+    private func validate() -> String?{
+        if (isNullOrEmpty(field: nameTextField)) {
+            return "O campo Nome é obrigatório"
+        }
+        if(isNullOrEmpty(field: emailTextField)){
+            return "O campo Email é obrigatório"
+        }
+        if(isNullOrEmpty(field: passwordTextField)){
+            return "O campo Senha é obrigatório"
+        }
+        if (isNullOrEmpty(field: passwordConfirmationTextField)){
+            return "O campo Confirmar de Senha é obrigatório"
+        }
+
+        return nil
+    }
+
+    private func isNullOrEmpty(field:UITextField!) -> Bool{
+        field.hasText == false || field.text?.isEmpty == true
     }
 }
