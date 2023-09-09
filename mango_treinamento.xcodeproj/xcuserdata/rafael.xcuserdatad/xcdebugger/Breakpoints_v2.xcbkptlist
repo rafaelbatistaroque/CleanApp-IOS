@@ -55,54 +55,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "466AA06D-C4A6-4AAD-B16E-AE8439D2422B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Tests/UITests/SignUpViewControllerTests.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "466AA06D-C4A6-4AAD-B16E-AE8439D2422B - cb6e14ad39b548e4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UITests.SignUpViewControllerTests.test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage() -&gt; ()"
-                  moduleName = "UITests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafael/DEV/mango_treinamento/Tests/UITests/SignUpViewControllerTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "248">
-               </Location>
-               <Location
-                  uuid = "466AA06D-C4A6-4AAD-B16E-AE8439D2422B - cb6e14ad39b548bb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "UITests.SignUpViewControllerTests.test_givenSignUpPageAfterOnTapSaveButton_whenEmailNotProvided_thenEnsureShowErrorMessage() -&gt; ()"
-                  moduleName = "UITests"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/rafael/DEV/mango_treinamento/Tests/UITests/SignUpViewControllerTests.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "77"
-                  endingLineNumber = "77"
-                  offsetFromSymbolStart = "436">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "AF18D923-BE4D-40D6-ABBF-3CE27F41859E"
             shouldBeEnabled = "No"
             ignoreCount = "0"

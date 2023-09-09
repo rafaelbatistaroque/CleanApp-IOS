@@ -25,10 +25,12 @@ final class SignUpViewController: UIViewController, Storyboarded {
 
     @objc private func saveButtonTapped(){
         display(viewModel: LoadingViewModel(isLoading: true))
-        if (nameTextField?.hasText == false || nameTextField?.text?.isEmpty == true) {
+        if (nameTextField.hasText == false || nameTextField?.text?.isEmpty == true) {
             alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Nome é obrigatório"))
-        }else if(emailTextField?.hasText == false || emailTextField?.text == ""){
+        }else if(emailTextField.hasText == false || emailTextField?.text?.isEmpty == true){
             alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Email é obrigatório"))
+        }else if(passwordTextField.hasText == false || passwordTextField.text?.isEmpty == true){
+            alertView?.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: "O campo Password é obrigatório"))
         }
 
         signUp?(AddAccountInput(

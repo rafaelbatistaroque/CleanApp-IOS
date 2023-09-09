@@ -84,4 +84,18 @@ final class SignUpViewControllerTests: XCTestCase {
         expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
     }
 
+    func test_givenSignUpPageAfterOnTapSaveButton_whenPasswordNotProvided_thenEnsureShowErrorMessage() throws{
+        //arrange
+        let expectedAlertViewModel =  AlertViewModel(title: "Falha na validação", message: "O campo Password é obrigatório")
+        let (sut, alertViewSpy) = createSUT()
+        sut.loadViewIfNeeded()
+        fillSignUpField(of: sut, name: "any_name", email: "any_email", password: nil)
+
+        //act
+        sut.saveButton?.simulateTap()
+
+        //assert
+        expect(should: alertViewSpy.viewModel, beEqual: expectedAlertViewModel)
+    }
+
 }
