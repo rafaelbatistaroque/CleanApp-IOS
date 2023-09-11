@@ -2,6 +2,7 @@ import Foundation
 import Infra
 import Application
 import Alamofire
+import Shared
 
 extension AlamofireAdapterTests {
     func createResponseTestCases(withConditions items:[(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)]) -> Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)> {
@@ -9,7 +10,9 @@ extension AlamofireAdapterTests {
     }
     
     func createSUT(file: StaticString = #filePath, line: UInt = #line) -> (AlamofireAdapter, URL){
-        let sut = AlamofireAdapter(session: Session(configuration: createSessionConfiguration()))
+        @Provider var session = Session(configuration: createSessionConfiguration())
+
+        let sut = AlamofireAdapter()
         checkMemoryLeak(for: sut, file: file, line: line)
         
         return (sut, fakeURL())

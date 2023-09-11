@@ -1,4 +1,6 @@
 import Foundation
+import Shared
+
 public struct AddAccountOutput : DTOProtocol{
     public let id: String
     public let name: String

@@ -52,7 +52,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="DrY-tU-Soq">
-                                <rect key="frame" x="326" y="605" width="37" height="37"/>
+                                <rect key="frame" x="326" y="604.66666666666663" width="37" height="37"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R5i-Gc-4K0">
@@ -104,7 +104,7 @@
                         <outlet property="nameTextField" destination="9hy-01-aVI" id="nA7-Ke-S9t"/>
                         <outlet property="passwordConfirmationTextField" destination="gN3-9b-E5Z" id="iDN-hG-koe"/>
                         <outlet property="passwordTextField" destination="eRT-nV-1av" id="ZK3-fo-m4Y"/>
-                        <outlet property="saveButton" destination="R5i-Gc-4K0" id="4XZ-zI-Ain"/>
+                        <outlet property="saveButton" destination="R5i-Gc-4K0" id="0fz-wJ-9gb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

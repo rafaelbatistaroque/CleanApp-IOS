@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Presenter
 
 extension SignUpViewController: LoadingViewProtocol {
     func display(viewModel: LoadingViewModel) {

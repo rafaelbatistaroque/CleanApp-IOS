@@ -17,10 +17,14 @@ extension XCTestCase {
     func expect<T>(shouldBeNil expectedResult:T?, file: StaticString = #filePath, line: UInt = #line) {
         XCTAssertNil(expectedResult, file: file, line: line)
     }
+
+    func noExpect<T>(item:T, file: StaticString = #filePath, line: UInt = #line) {
+        XCTFail("No expected \(item) result", file: file, line: line)
+    }
     
     func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line){
         addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line:line)
+            XCTAssertNil(instance, "Memory leak", file: file, line:line)
         }
     }
 }

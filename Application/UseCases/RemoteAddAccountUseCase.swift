@@ -1,19 +1,25 @@
 import Foundation
 import Domain
+import Shared
 
 final public class RemoteAddAccountUseCase: AddAccountProtocol {
     private let url: URL
-    private let httpClient: HttpPostClientProtocol
-    
-    public required init(url: URL, httpClient: HttpPostClientProtocol) {
+    @Inject var httpClient: HttpPostClientProtocol
+
+    public required init(url: URL) {
         self.url = url
-        self.httpClient = httpClient
     }
     
     public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
-        let result = await self.httpClient.post(to: self.url, with: input.toData())
+        let resultAccount = Account.make(input: input)
+        if case .failure(let failure) = resultAccount {
+            return .failure(failure)
+        }
+
+        let account = try! resultAccount.get()
+        let resultPost = await self.httpClient.post(to: self.url, with: account.toData())
         
-        switch result{
+        switch resultPost{
             case .failure(.noConnectivity):
                 return .failure(.unexpected)
             case .success(let data):

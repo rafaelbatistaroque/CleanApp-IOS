@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Shared
 
 public protocol Storyboarded {
     static func instantiate() -> Self

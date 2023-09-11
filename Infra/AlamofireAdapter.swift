@@ -1,12 +1,13 @@
 import Foundation
 import Alamofire
 import Application
+import Shared
 
 final public class AlamofireAdapter : HttpPostClientProtocol {
-    private let session:Session
+    @Inject private var session: Session
     
-    public init(session: Session = .default) {
-        self.session = session
+    public init() {
+//        self.session = session
     }
     
     public func post(to url: URL, with data: Data? = nil) async -> Result<Data?, HttpError> {
