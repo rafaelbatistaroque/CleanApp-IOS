@@ -30,6 +30,10 @@ func fakeAddAccountInput(name:String? = "any_name", email:String? = "any_email",
     AddAccountInput(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
 }
 
+func fakeSuccessAccount(input: AddAccountInput = fakeAddAccountInput()) -> Result<Account, DomainError> {
+    Account.make(input: input)
+}
+
 func fakeAccountInputError(name:String? = "any_name", email:String? = "any_email", password:String? = "any_password", passwordConfirmation:String? = "any_password") -> DomainError {
     var errorMessage:[String] = []
     if name == nil {
