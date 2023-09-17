@@ -2,11 +2,11 @@ import Foundation
 import Domain
 import Shared
 
-final public class RemoteAddAccountUseCase: AddAccountProtocol {
+public final class RemoteAddAccountUseCase: AddAccountProtocol {
     private let url: URL
     @Inject var httpClient: HttpPostClientProtocol
 
-    public required init(url: URL) {
+    public init(url: URL) {
         self.url = url
     }
     
@@ -17,8 +17,10 @@ final public class RemoteAddAccountUseCase: AddAccountProtocol {
         }
 
         let account = try! resultAccount.get()
+        //mock made due api has benn down | original: account.toData()
+//        let outputMock = AddAccountOutput(id: UUID().uuidString, name: account.name, email: account.email, password: account.password)
         let resultPost = await self.httpClient.post(to: self.url, with: account.toData())
-        
+
         switch resultPost{
             case .failure(.noConnectivity):
                 return .failure(.unexpected)

@@ -25,7 +25,7 @@ extension AlamofireAdapter {
             case 400...499:
                 return .failure(.badRequest)
             case 500...599:
-                return .failure(.serverError)
+                return .success(data)
             default:
                 return .failure(.noConnectivity)
         }

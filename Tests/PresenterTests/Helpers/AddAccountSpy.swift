@@ -23,9 +23,3 @@ class AddAccountSpy: AddAccountProtocol{
         return nil
     }
 }
-
-extension WeakVarProxy:AddAccountProtocol where T: AddAccountProtocol{
-    public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
-        await instance?.handle(input: input) ?? .failure(.unexpected)
-    }
-}

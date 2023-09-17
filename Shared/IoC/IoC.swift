@@ -16,19 +16,14 @@ public struct DependencyInjector{
             fatalError("No provider registered for type \(T.self)")
         }
 
-        print("Injected <-", dependecyProvided, "for type \(T.self)")
+        print("🟢 Injected <-", dependecyProvided, "for type \(T.self)")
         return dependecyProvided
     }
 
     public static func register<T>(dependecy:T){
-//        if let alreadyExists = self.dependencies[String(describing: T.self)] {
-//            print("Provided for type \(T.self) already exists ->", alreadyExists)
-//
-//            return
-//        }
 
         self.dependencies[String(describing: T.self)] = dependecy
-        print("Provided ->", dependecy, "to \(T.self)")
+        print("🔵 Provided ->", dependecy, "to \(T.self)")
     }
 
     public static func clear<T>(dependecy:T){

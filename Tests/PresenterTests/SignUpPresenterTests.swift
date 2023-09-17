@@ -6,19 +6,20 @@ import Shared
 final class SignUpPresenterTests: XCTestCase {
     func test_givenSignUpPresenter_whenFailsValidationAddAccount_thenEnsureShowErrorMessage() async {
         //arrange
-        let (sut, alertViewSpy, addAccountSpy,_) = createSut()
+        let (sut, addAccountSpy) = createSut()
         addAccountSpy.resultDefined(with: .failure(fakeAccountInputError(name: nil, email: nil)))
 
         //act
         await sut.signUp(viewModel: fakeAddAccountViewModel())
 
         //assert
-        expect(should: alertViewSpy.viewModel?.message, beEqual: addAccountSpy.getMessageErrors())
+        expect(should: sut.state, beEqual: .failure(fakeAlertView(title: "Erro na validação", message: addAccountSpy.getMessageErrors()!)))
+        expect(should: sut.isShowAlert, beEqual: true)
     }
 
-    func test_givenSignUpPresenter_whenCallsHandleUseCase_thenEnsureCalssWithCorrectValues() async {
+    func test_givenSignUpPresenter_whenCallsHandleUseCase_thenEnsureCallsWithCorrectValues() async {
         //arrange
-        let (sut, _, addAccountSpy,_) = createSut()
+        let (sut, addAccountSpy) = createSut()
 
         //act
         await sut.signUp(viewModel: fakeAddAccountViewModel())
@@ -29,55 +30,50 @@ final class SignUpPresenterTests: XCTestCase {
 
     func test_givenSignUpPresenter_whenFailsAddAccount_thenEnsureShowErrorMessage() async {
         //arrange
-        let (sut, alertViewSpy, addAccountSpy,_) = createSut()
+        let (sut, addAccountSpy) = createSut()
+        addAccountSpy.resultDefined(with: .failure(fakeAccountInputError()))
+
+        //act
+        await sut.signUp(viewModel: fakeAddAccountViewModel())
+
+        //assert
+        if case .failure(let erro) = sut.state {
+            expect(should: erro.title, beEqual: "Erro")
+            expect(should: erro.message, beEqual: TextMessages.somethingWrongTryLater.rawValue)
+            expect(should: sut.isShowAlert, beEqual: true)
+        }
+    }
+
+    func test_givenSignUpPresenter_whenFailsAddAccount_thenEnsureShowErrorMessage2() async {
+        //arrange
+        let (sut, addAccountSpy) = createSut()
         addAccountSpy.resultDefined(with: .failure(.unexpected))
 
         //act
         await sut.signUp(viewModel: fakeAddAccountViewModel())
 
         //assert
-        expect(should: alertViewSpy.viewModel?.title, beEqual: "Erro")
-        expect(should: alertViewSpy.viewModel?.message, beEqual: TextMessages.somethingWrongTryLater.rawValue)
-    }
-
-    func test_givenSignUpPresenter_whenSignUp_thenEnsureShowLoadingBeforeAddAccount() async {
-        //arrange
-        let (sut, _, _, loadingViewSpy) = createSut()
-        loadingViewSpy.inicialLoading()
-
-        //act
-        await sut.signUp(viewModel: fakeAddAccountViewModel())
-
-        //assert
-        expect(should: loadingViewSpy.isLoading, beEqual: true)
-        expect(should: loadingViewSpy.isInicialLoading, beEqual: true)
-        expect(should: loadingViewSpy.isEndLoading, beEqual: false)
-    }
-
-    func test_givenSignUpPresenter_whenSignUp_thenEnsureHideLoadingAfterAddAccount() async {
-        //arrange
-        let (sut, _, _, loadingViewSpy) = createSut()
-        loadingViewSpy.endLoading()
-
-        //act
-        await sut.signUp(viewModel: fakeAddAccountViewModel())
-
-        //assert
-        expect(should: loadingViewSpy.isLoading, beEqual: false)
-        expect(should: loadingViewSpy.isEndLoading, beEqual: true)
-        expect(should: loadingViewSpy.isInicialLoading, beEqual: false)
+        if case .failure(let erro) = sut.state {
+            expect(should: erro.title, beEqual: "Erro")
+            expect(should: erro.message, beEqual: TextMessages.somethingWrongTryLater.rawValue)
+            expect(should: sut.isShowAlert, beEqual: true)
+        }
     }
 
     func test_givenSignUpPresenter_whenSuccessSignUp_thenEnsureShowSuccessMessage() async {
         //arrange
-        let (sut, alertViewSpy, addAccountSpy,_) = createSut()
+        let (sut, addAccountSpy) = createSut()
         addAccountSpy.resultDefined(with: .success(fakeAddAccountOutput()))
 
         //act
         await sut.signUp(viewModel: fakeAddAccountViewModel())
 
         //assert
-        expect(should: alertViewSpy.viewModel?.title, beEqual: "Sucesso")
-        expect(should: alertViewSpy.viewModel?.message, beEqual: TextMessages.successAddAccount.rawValue)
+        if case .success(let alert, let success) = sut.state {
+            expect(should: alert.title, beEqual: "Sucesso")
+            expect(should: alert.message, beEqual: TextMessages.successAddAccount.rawValue)
+            expect(should: success.id, beEqual: try? addAccountSpy.result.get().id)
+        }
+        expect(should: sut.isShowAlert, beEqual: true)
     }
 }

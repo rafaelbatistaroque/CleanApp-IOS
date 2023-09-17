@@ -35,12 +35,12 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectData() async{
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        let input = fakeAddAccountInputValid()
-        let expectedContent = input.toData();
-        
+        let account = try! fakeSuccessAccount().get()
+        let expectedContent = account.toData();
+
         //act
-        let _ = await sut.handle(input: input)
-        
+        let _ = await sut.handle(input: fakeAddAccountInputValid())
+
         //assert
         expect(
             should: httpClientSpy.inputData,

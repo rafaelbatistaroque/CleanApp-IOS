@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53539AD92AAA43E100973A35"
-               BuildableName = "UI.framework"
-               BlueprintName = "UI"
+               BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
+               BuildableName = "Presenter.framework"
+               BlueprintName = "Presenter"
                ReferencedContainer = "container:mango_treinamento.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -34,9 +34,9 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53539AE02AAA43E100973A35"
-               BuildableName = "UITests.xctest"
-               BlueprintName = "UITests"
+               BlueprintIdentifier = "536DB8F22AAE4C0A0071AE07"
+               BuildableName = "PresenterTests.xctest"
+               BlueprintName = "PresenterTests"
                ReferencedContainer = "container:mango_treinamento.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -62,9 +62,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53539AD92AAA43E100973A35"
-            BuildableName = "UI.framework"
-            BlueprintName = "UI"
+            BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
+            BuildableName = "Presenter.framework"
+            BlueprintName = "Presenter"
             ReferencedContainer = "container:mango_treinamento.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

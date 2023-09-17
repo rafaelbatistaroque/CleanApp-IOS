@@ -34,6 +34,10 @@ func fakeSuccessAccount(input: AddAccountInput = fakeAddAccountInput()) -> Resul
     Account.make(input: input)
 }
 
+func fakeAlertView(title:String = "Erro", message:String = TextMessages.somethingWrongTryLater.rawValue) -> AlertView{
+    AlertView(title: title, message: message)
+}
+
 func fakeAccountInputError(name:String? = "any_name", email:String? = "any_email", password:String? = "any_password", passwordConfirmation:String? = "any_password") -> DomainError {
     var errorMessage:[String] = []
     if name == nil {

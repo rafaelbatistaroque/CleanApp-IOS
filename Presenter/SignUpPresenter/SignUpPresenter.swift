@@ -2,33 +2,37 @@ import Foundation
 import Shared
 import Domain
 
-public final class SignUpPresenter: SignUpPresenterProtocol {
-    @Inject var alertView: AlertViewProtocol
-    @Inject var loadingView: LoadingViewProtocol
-    @Inject var addAccount: AddAccountProtocol
-
-    public init() {
-    }
-
+public final class SignUpPresenter: ObservableObject, SignUpPresenterProtocol {
+    @Inject private var addAccount: AddAccountProtocol
+    
+    @Published public var state: StatePresenter = .idle
+    @Published public var isShowAlert: Bool = false
+    
+    public init() {}
+    
     public func signUp(viewModel: AddAccountViewModel) async {
-        loadingView.display(viewModel: LoadingViewModel(isLoading: true))
-        let result = await addAccount.handle(
-            input: viewModel.toAddAccountInput())
-
-        switch result {
-            case .success:
-                alertView.showMessage(viewModel: AlertViewModel(title: "Sucesso", message: TextMessages.successAddAccount.rawValue))
-            case .failure(let error):
-                if let message = error.validateMessage {
-                    message.isEmpty
-                        ? alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: TextMessages.somethingWrongTryLater.rawValue))
-                        : alertView.showMessage(viewModel: AlertViewModel(title: "Falha na validação", message: message.joined(separator: "\n")))
-                }else{
-                    alertView.showMessage(viewModel: AlertViewModel(title: "Erro", message: TextMessages.somethingWrongTryLater.rawValue))
-                }
+        await MainActor.run {
+            self.state = .loading
         }
+        
+        let result = await addAccount.handle(input: viewModel.toAddAccountInput())
+        
+        await MainActor.run {
+            switch result {
+                case .success(let success):
+                    self.state = .success(AlertView(title: "Sucesso", message: TextMessages.successAddAccount.rawValue), success)
+                case .failure(let error):
+                    if let message = error.validateMessage {
+                        if message.isEmpty == false {
+                            self.state = .failure(AlertView(title: "Erro na validação", message: error.validateMessage!.joined(separator: "\n")))
+                            self.isShowAlert = true
+                            return
+                        }
 
-        loadingView.display(viewModel: LoadingViewModel(isLoading: false))
+                    }
+                    self.state = .failure(AlertView(title: "Erro", message: TextMessages.somethingWrongTryLater.rawValue))
+            }
+            self.isShowAlert = true
+        }
     }
-
 }

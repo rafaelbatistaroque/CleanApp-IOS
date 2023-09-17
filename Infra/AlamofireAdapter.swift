@@ -6,18 +6,17 @@ import Shared
 final public class AlamofireAdapter : HttpPostClientProtocol {
     @Inject private var session: Session
     
-    public init() {
-//        self.session = session
-    }
+    public init() { }
     
     public func post(to url: URL, with data: Data? = nil) async -> Result<Data?, HttpError> {
         let request = makeURLRequest(
             to: url,
             method: .post,
             with: data)
-        
+
+        try? await Task.sleep(nanoseconds: 5_000_000)
         let responseData = await self.session.request(request).serializingData().response
-        
+
         guard let statusCode = responseData.response?.statusCode else {
             return .failure(.noConnectivity)
         }
@@ -25,8 +24,8 @@ final public class AlamofireAdapter : HttpPostClientProtocol {
         switch responseData.result {
         case .failure:
             return .failure(.noConnectivity)
-        case .success(let data):
-            return statucCodeResponseHandler(for: statusCode, data: data)
+        case .success(_):// remove let data dur api has been down | original .success(let data)
+            return statucCodeResponseHandler(for: statusCode, data: data!)
         }
     }
 }
