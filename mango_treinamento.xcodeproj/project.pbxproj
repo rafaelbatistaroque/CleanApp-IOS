@@ -46,7 +46,6 @@
 		536DB9392AAE6AE60071AE07 /* DTOProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535859A02AA548F9008AE97C /* DTOProtocol.swift */; };
 		536DB93C2AAE6B660071AE07 /* DataMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB93B2AAE6B660071AE07 /* DataMappers.swift */; };
 		536DB93E2AAE6B840071AE07 /* DTOProtocolMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB93D2AAE6B840071AE07 /* DTOProtocolMappers.swift */; };
-		536DB9442AAE6CD10071AE07 /* AddAccountViewModelMappers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB9412AAE6C140071AE07 /* AddAccountViewModelMappers.swift */; };
 		536DB9492AAE6F5B0071AE07 /* SignUpPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB9482AAE6F5B0071AE07 /* SignUpPresenterProtocol.swift */; };
 		536DB94D2AAE71F50071AE07 /* SignUpPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB8F82AAE4C0A0071AE07 /* SignUpPresenterTests.swift */; };
 		536DB94E2AAE72050071AE07 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536DB9452AAE6F3E0071AE07 /* SignUpPresenter.swift */; };
@@ -358,7 +357,6 @@
 		536DB9372AAE6A690071AE07 /* AddAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModel.swift; sourceTree = "<group>"; };
 		536DB93B2AAE6B660071AE07 /* DataMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataMappers.swift; sourceTree = "<group>"; };
 		536DB93D2AAE6B840071AE07 /* DTOProtocolMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTOProtocolMappers.swift; sourceTree = "<group>"; };
-		536DB9412AAE6C140071AE07 /* AddAccountViewModelMappers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModelMappers.swift; sourceTree = "<group>"; };
 		536DB9452AAE6F3E0071AE07 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		536DB9482AAE6F5B0071AE07 /* SignUpPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenterProtocol.swift; sourceTree = "<group>"; };
 		536DB9572AAE785D0071AE07 /* AddAccountInputErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountInputErrorMessage.swift; sourceTree = "<group>"; };
@@ -763,7 +761,6 @@
 				537306822AB61D2F004E322C /* Enums */,
 				536DB9532AAE72ED0071AE07 /* Views */,
 				536DB9472AAE6F520071AE07 /* Protocols */,
-				536DB9432AAE6CA70071AE07 /* Mappers */,
 				536DB9362AAE6A5A0071AE07 /* SignUpPresenter */,
 			);
 			path = Presenter;
@@ -801,14 +798,6 @@
 			children = (
 				536DB93B2AAE6B660071AE07 /* DataMappers.swift */,
 				536DB93D2AAE6B840071AE07 /* DTOProtocolMappers.swift */,
-			);
-			path = Mappers;
-			sourceTree = "<group>";
-		};
-		536DB9432AAE6CA70071AE07 /* Mappers */ = {
-			isa = PBXGroup;
-			children = (
-				536DB9412AAE6C140071AE07 /* AddAccountViewModelMappers.swift */,
 			);
 			path = Mappers;
 			sourceTree = "<group>";
@@ -1540,7 +1529,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				536DB9492AAE6F5B0071AE07 /* SignUpPresenterProtocol.swift in Sources */,
-				536DB9442AAE6CD10071AE07 /* AddAccountViewModelMappers.swift in Sources */,
 				537306842AB61D42004E322C /* StatePresenter.swift in Sources */,
 				536DB94E2AAE72050071AE07 /* SignUpPresenter.swift in Sources */,
 				536DB9382AAE6A690071AE07 /* AddAccountViewModel.swift in Sources */,

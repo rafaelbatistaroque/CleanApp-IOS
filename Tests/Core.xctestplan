@@ -36,6 +36,7 @@
   },
   "testTargets" : [
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:mango_treinamento.xcodeproj",
         "identifier" : "53CAF4002AA8DC2D00C293D6",
@@ -43,6 +44,7 @@
       }
     },
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:mango_treinamento.xcodeproj",
         "identifier" : "536DB8D82AAE0C740071AE07",
@@ -50,6 +52,7 @@
       }
     },
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:mango_treinamento.xcodeproj",
         "identifier" : "53CAF4142AA8DCA000C293D6",
@@ -57,6 +60,7 @@
       }
     },
     {
+      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:mango_treinamento.xcodeproj",
         "identifier" : "536DB8F22AAE4C0A0071AE07",
