@@ -2,12 +2,15 @@ import XCTest
 import Application
 import Infra
 import Domain
+import Shared
+import Alamofire
 
 final class UseCasesIntegrationTests: XCTestCase {
     func test_givenAddAccount_whenSuccessSignup_thenReturnAccountCreated() async {
         //arrange
-        let url = URL(string: "https://clean-node-api.herokuapp.com/api/signup")!
-        let alamofireAdapter = AlamofireAdapter();
+        let url = URL(string: "https://fordevs.herokuapp.com/api/signup")!
+        @Provider var alamofireProvided = Session()
+        @Provider var adapterProvided = AlamofireAdapter() as HttpPostClientProtocol
         let sut = RemoteAddAccountUseCase(url: url)
         let addAccountInput = AddAccountInput(name: "Rafael Batista", email: "rafael.batista.pessoal@gmail.com", password: "fordev.67", passwordConfirmation: "fordev.67")
 
@@ -25,8 +28,9 @@ final class UseCasesIntegrationTests: XCTestCase {
 
     func test_givenAddAccount_whenFailSignup_thenReturnAccountCreated() async {
         //arrange
-        let url = URL(string: "https://clean-node-api.herokuapp.com/api/signup")!
-        let alamofireAdapter = AlamofireAdapter();
+        let url = URL(string: "https://fordevs.herokuapp.com/api/signup")!
+        @Provider var alamofireProvided = Session()
+        @Provider var adapterProvided = AlamofireAdapter() as HttpPostClientProtocol
         let sut = RemoteAddAccountUseCase(url: url)
         let addAccountInput = AddAccountInput(name: "Rafael Batista", email: "rafael.batista.pessoal@gmail.com", password: "fordev.68", passwordConfirmation: "fordev.67")
 
