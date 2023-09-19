@@ -53,7 +53,7 @@ final class SignUpPresenterTests: XCTestCase {
         expect(should: addAccountSpy.input, beEqual: fakeAddAccountInput())
     }
 
-    func test_givenSignUpPresenter_whenFailsAddAccount_thenEnsureShowErrorMessage() async {
+    func test_givenSignUpPresenter_whenGenericFailsOnAddAccount_thenEnsureShowErrorMessage() async {
         //arrange
         let (sut, addAccountSpy, _) = createSut()
         addAccountSpy.resultDefined(with: .failure(.unexpected))
@@ -65,6 +65,22 @@ final class SignUpPresenterTests: XCTestCase {
         if case .failure(let erro) = sut.state {
             expect(should: erro.title, beEqual: "Erro")
             expect(should: erro.message, beEqual: TextMessages.somethingWrongTryLater.rawValue)
+            expect(should: sut.isShowAlert, beEqual: true)
+        }
+    }
+
+    func test_givenSignUpPresenter_whenEmailInUseFailsOnAddAccount_thenEnsureShowErrorMessage() async {
+        //arrange
+        let (sut, addAccountSpy, _) = createSut()
+        addAccountSpy.resultDefined(with: .failure(.emailInUse))
+
+        //act
+        await sut.signUp(viewModel: fakeAddAccountViewModel())
+
+        //assert
+        if case .failure(let erro) = sut.state {
+            expect(should: erro.title, beEqual: "Erro")
+            expect(should: erro.message, beEqual: TextMessages.emailInUse.rawValue)
             expect(should: sut.isShowAlert, beEqual: true)
         }
     }

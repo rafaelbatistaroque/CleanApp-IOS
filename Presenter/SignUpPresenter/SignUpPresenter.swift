@@ -34,8 +34,10 @@ public final class SignUpPresenter: ObservableObject, SignUpPresenterProtocol {
             switch result {
                 case .success(let success):
                     self.state = .success(AlertView(title: "Sucesso", message: TextMessages.successAddAccount.rawValue), success)
-                case .failure:
-                    self.state = .failure(AlertView(title: "Erro", message: TextMessages.somethingWrongTryLater.rawValue))
+                case .failure(let error):
+                    self.state = error == .emailInUse
+                        ? .failure(AlertView(title: "Erro", message: TextMessages.emailInUse.rawValue))
+                        : .failure(AlertView(title: "Erro", message: TextMessages.somethingWrongTryLater.rawValue))
             }
             self.isShowAlert = true
         }
