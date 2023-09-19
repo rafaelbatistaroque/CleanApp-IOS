@@ -45,7 +45,21 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
             should: result,
             beEqual: .failure(DomainError.unexpected))
     }
-    
+
+    func test_givenAddAccount_whenForbidenFailsHttpPostClient_thenMustBeReturnResultEmailInUse() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.resultDefined(with: .failure(.forbidden))
+
+        //act
+        let result = await sut.handle(input: fakeAddAccountInputValid())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(DomainError.emailInUse))
+    }
+
     func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultData() async{
         //arrange
         let (sut, httpClientSpy) = createSUT()

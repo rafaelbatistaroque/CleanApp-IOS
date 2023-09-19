@@ -14,15 +14,17 @@ public final class RemoteAddAccountUseCase: AddAccountProtocol {
         //let outputMock = AddAccountOutput(id: UUID().uuidString, name: account.name, email: account.email, password: account.password)
         let resultPost = await self.httpClient.post(to: self.url, with: input.toData())
 
-        switch resultPost{
+        switch resultPost {
             case .failure(.noConnectivity):
                 return .failure(.unexpected)
+            case .failure(let error):
+                return error == .forbidden
+                    ? .failure(.emailInUse)
+                    : .failure(.unexpected)
             case .success(let data):
                 if let accountOutput: AddAccountOutput = data?.toDTO(){
                     return .success(accountOutput)
                 }
-                return .failure(.unexpected)
-            default:
                 return .failure(.unexpected)
         }
     }

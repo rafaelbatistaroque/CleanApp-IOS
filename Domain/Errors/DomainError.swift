@@ -1,5 +1,6 @@
 import Foundation
 
 public enum DomainError: Error, Equatable{
-    case unexpected
+    case unexpected,
+    emailInUse
 }
