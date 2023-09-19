@@ -59,13 +59,13 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [(
-                data: nil,
+                dataReturned: nil,
                 response: nil,
                 error: fakeError(),
                 expectedResult: .failure(.noConnectivity))])
         
         for testCase in testCases {
-            UrlProtocolStub.simulateResponse(data: testCase.data, response: testCase.response, error: testCase.error)
+            UrlProtocolStub.simulateResponse(dataReturned: testCase.dataReturned, response: testCase.response, error: testCase.error)
             
             //act
             let result = await sut.post(to: url, with: fakeValidData())
@@ -82,16 +82,16 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: fakeValidData(), response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
-                (data: fakeValidData(), response: nil, error: fakeError(), expectedResult: .failure(.noConnectivity)),
-                (data: fakeValidData(), response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
-                (data: nil, response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
-                (data: nil, response: fakeUrlResponse(), error: nil, expectedResult: .failure(.noConnectivity)),
-                (data: nil, response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (dataReturned: fakeValidData(), response: nil, error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (dataReturned: fakeValidData(), response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
+                (dataReturned: nil, response: fakeUrlResponse(), error: fakeError(), expectedResult: .failure(.noConnectivity)),
+                (dataReturned: nil, response: fakeUrlResponse(), error: nil, expectedResult: .failure(.noConnectivity)),
+                (dataReturned: nil, response: nil, error: nil, expectedResult: .failure(.noConnectivity)),
             ])
         
         for testCase in testCases {
-            UrlProtocolStub.simulateResponse(data: testCase.data, response: testCase.response, error: testCase.error)
+            UrlProtocolStub.simulateResponse(dataReturned: testCase.dataReturned, response: testCase.response, error: testCase.error)
             
             //act
             let result = await sut.post(to: url, with: fakeValidData())
@@ -106,13 +106,14 @@ final class AlamofireAdapterTests: XCTestCase {
     func test_givenAlamofireAdapterRequest_whenPostStatusCode200_thenEnsureResponseWithData() async {
         //arrange
         let (sut, url) = createSUT()
+        let dataReturned = fakeValidData()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: fakeValidData(), response: fakeUrlResponse(), error: nil, expectedResult: .success(fakeValidData())),
+                (dataReturned: dataReturned, response: fakeUrlResponse(), error: nil, expectedResult: .success(dataReturned)),
             ])
         
         for testCase in testCases {
-            UrlProtocolStub.simulateResponse(data: testCase.data, response: testCase.response, error: testCase.error)
+            UrlProtocolStub.simulateResponse(dataReturned: testCase.dataReturned, response: testCase.response, error: testCase.error)
             
             //act
             let result = await sut.post(to: url, with: fakeValidData())
@@ -129,13 +130,13 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: nil, response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
-                (data: fakeEmptyData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
+                (dataReturned: nil, response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
+                (dataReturned: fakeEmptyData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 204), error: nil, expectedResult: .success(nil)),
             ])
         
         for testCase in testCases {
-            UrlProtocolStub.simulateResponse(data: testCase.data, response: testCase.response, error: testCase.error)
+            UrlProtocolStub.simulateResponse(dataReturned: testCase.dataReturned, response: testCase.response, error: testCase.error)
             
             //act
             let result = await sut.post(to: url, with: fakeValidData())
@@ -152,15 +153,15 @@ final class AlamofireAdapterTests: XCTestCase {
         let (sut, url) = createSUT()
         let testCases = createResponseTestCases(
             withConditions: [
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 400), error: nil, expectedResult: .failure(.badRequest)),
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 401), error: nil, expectedResult: .failure(.unauthorized)),
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 403), error: nil, expectedResult: .failure(.forbidden)),
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 500), error: nil, expectedResult: .success(fakeValidData())),//mock to pass, due api has been down | original .failure(.serverError)
-                (data: fakeValidData(), response: fakeUrlResponse(statusCode: 300), error: nil, expectedResult: .failure(.noConnectivity)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 400), error: nil, expectedResult: .failure(.badRequest)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 401), error: nil, expectedResult: .failure(.unauthorized)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 403), error: nil, expectedResult: .failure(.forbidden)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 500), error: nil, expectedResult: .failure(.serverError)),
+                (dataReturned: fakeValidData(), response: fakeUrlResponse(statusCode: 300), error: nil, expectedResult: .failure(.noConnectivity)),
             ])
         
         for testCase in testCases {
-            UrlProtocolStub.simulateResponse(data: testCase.data, response: testCase.response, error: testCase.error)
+            UrlProtocolStub.simulateResponse(dataReturned: testCase.dataReturned, response: testCase.response, error: testCase.error)
             
             //act
             let result = await sut.post(to: url, with: fakeValidData())

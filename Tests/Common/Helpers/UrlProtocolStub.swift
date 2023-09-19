@@ -2,10 +2,10 @@ import Foundation
 
 class UrlProtocolStub: URLProtocol{
     static var request: URLRequest?
-    static var response: (data: Data?, response: HTTPURLResponse?, error: Error?)
+    static var response: (dataReturned: Data?, response: HTTPURLResponse?, error: Error?)
 
-    static func simulateResponse(data: Data?, response: HTTPURLResponse?, error: Error?){
-        UrlProtocolStub.response = (data, response, error)
+    static func simulateResponse(dataReturned: Data?, response: HTTPURLResponse?, error: Error?){
+        UrlProtocolStub.response = (dataReturned, response, error)
     }
     
     override open class func canInit(with request: URLRequest) -> Bool {
@@ -19,8 +19,8 @@ class UrlProtocolStub: URLProtocol{
     override open func startLoading() {
         UrlProtocolStub.request = request
         
-        let (data, response, error) = UrlProtocolStub.response
-        if let data = data {
+        let (dataReturned, response, error) = UrlProtocolStub.response
+        if let data = dataReturned {
             client?.urlProtocol(self, didLoad: data)
         }
 

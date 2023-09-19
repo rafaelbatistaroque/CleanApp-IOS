@@ -4,18 +4,13 @@
       "id" : "CB643297-7561-45B8-A3A6-11C7C067361D",
       "name" : "Configuration",
       "options" : {
-        "threadSanitizerEnabled" : true
+        "threadSanitizerEnabled" : false
       }
     }
   ],
   "defaultOptions" : {
     "codeCoverage" : {
       "targets" : [
-        {
-          "containerPath" : "container:mango_treinamento.xcodeproj",
-          "identifier" : "53A449F72A990C8D007DF156",
-          "name" : "Domain"
-        },
         {
           "containerPath" : "container:mango_treinamento.xcodeproj",
           "identifier" : "535859812AA52202008AE97C",
@@ -25,6 +20,21 @@
           "containerPath" : "container:mango_treinamento.xcodeproj",
           "identifier" : "531132972AA7907600F4B101",
           "name" : "Infra"
+        },
+        {
+          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "identifier" : "53A449F72A990C8D007DF156",
+          "name" : "Domain"
+        },
+        {
+          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "identifier" : "536DB8EB2AAE4C0A0071AE07",
+          "name" : "Presenter"
+        },
+        {
+          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "identifier" : "53981FF52AB11859004DF741",
+          "name" : "Main"
         }
       ]
     },
@@ -45,6 +55,27 @@
         "containerPath" : "container:mango_treinamento.xcodeproj",
         "identifier" : "53CAF4142AA8DCA000C293D6",
         "name" : "InfraTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "identifier" : "536DB8D82AAE0C740071AE07",
+        "name" : "DomainTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "identifier" : "53E1F24B2AB7E2CA00602C6C",
+        "name" : "MainTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "identifier" : "536DB8F22AAE4C0A0071AE07",
+        "name" : "PresenterTests"
       }
     }
   ],

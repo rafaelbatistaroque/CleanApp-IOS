@@ -11,15 +11,8 @@ public final class RemoteAddAccountUseCase: AddAccountProtocol {
     }
     
     public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
-        let resultAccount = Account.make(input: input)
-        if case .failure(let failure) = resultAccount {
-            return .failure(failure)
-        }
-
-        let account = try! resultAccount.get()
-        //mock made due api has benn down | original: account.toData()
-//        let outputMock = AddAccountOutput(id: UUID().uuidString, name: account.name, email: account.email, password: account.password)
-        let resultPost = await self.httpClient.post(to: self.url, with: account.toData())
+        //let outputMock = AddAccountOutput(id: UUID().uuidString, name: account.name, email: account.email, password: account.password)
+        let resultPost = await self.httpClient.post(to: self.url, with: input.toData())
 
         switch resultPost{
             case .failure(.noConnectivity):
@@ -34,3 +27,4 @@ public final class RemoteAddAccountUseCase: AddAccountProtocol {
         }
     }
 }
+

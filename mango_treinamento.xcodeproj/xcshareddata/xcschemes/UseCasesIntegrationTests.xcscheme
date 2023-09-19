@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1430"
+   LastUpgradeVersion = "1500"
    version = "1.7">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -23,11 +23,6 @@
                BlueprintName = "UseCasesIntegrationTests"
                ReferencedContainer = "container:mango_treinamento.xcodeproj">
             </BuildableReference>
-            <SkippedTests>
-               <Test
-                  Identifier = "UseCasesIntegrationTests/test_givenAddAccount_whenSuccessSignup_thenReturnAccountCreated()">
-               </Test>
-            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>

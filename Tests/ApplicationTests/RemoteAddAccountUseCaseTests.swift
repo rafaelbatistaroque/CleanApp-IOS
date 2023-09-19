@@ -3,21 +3,6 @@ import Domain
 import Application
 
 final class RemoteAddAccountUseCaseTests: XCTestCase {
-    func test_givenAddAccount_whenFailMakeAccount_thenMustReturnFailureWithMessage() async {
-        //arrange
-        let (sut, _) = createSUT()
-
-        //act
-        let result = await sut.handle(input: fakeAddAccountInputInvalidWith(name: nil))
-
-        //assert
-        if case .failure(let failure) = result {
-            expect(
-                should: failure,
-                beEqual: .validate(withMessage: failure.validateMessage!))
-        }else{noExpect(item: result)}
-    }
-
     func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectUrl() async {
         //arrange
         let expectedRemoteUrl = fakeURL()
@@ -35,15 +20,15 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
     func test_givenAddAccount_whenCallsHttpPostClient_thenMustBePassingCorrectData() async{
         //arrange
         let (sut, httpClientSpy) = createSUT()
-        let account = try! fakeSuccessAccount().get()
-        let expectedContent = account.toData();
+        let input = fakeAddAccountInputValid()
+        let expectedContent = input.toData();
 
         //act
-        let _ = await sut.handle(input: fakeAddAccountInputValid())
+        let _ = await sut.handle(input: input)
 
         //assert
         expect(
-            should: httpClientSpy.inputData,
+            should: httpClientSpy.data,
             beEqual: expectedContent)
     }
     

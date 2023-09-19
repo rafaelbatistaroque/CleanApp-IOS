@@ -5,8 +5,10 @@ import Alamofire
 import Shared
 
 extension AlamofireAdapterTests {
-    func createResponseTestCases(withConditions items:[(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)]) -> Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)> {
-        Array<(data: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)>(items)
+    func createResponseTestCases(withConditions items:[(dataReturned: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)])
+        -> Array<(dataReturned: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)> {
+        
+            Array<(dataReturned: Data?, response: HTTPURLResponse?, error: Error?, expectedResult: Result<Data?, HttpError>)>(items)
     }
     
     func createSUT(file: StaticString = #filePath, line: UInt = #line) -> (AlamofireAdapter, URL){

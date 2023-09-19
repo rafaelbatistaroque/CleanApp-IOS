@@ -5,10 +5,10 @@ import Shared
 
 extension RemoteAddAccountUseCaseTests {
     func fakeAddAccountInputValid() -> AddAccountInput{
-        AddAccountInput(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
+        AddAccountInput(name: "any_name", email: "test@email.com", password: "any_password", passwordConfirmation: "any_password")
     }
 
-    func fakeAddAccountInputInvalidWith(name:String? = "any_name", email:String? = "any_email", password:String? = "any_password", passwordConfirmation:String? = "any_password") -> AddAccountInput{
+    func fakeAddAccountInputInvalidWith(name:String? = "any_name", email:String? = "test@email.com", password:String? = "any_password", passwordConfirmation:String? = "any_password") -> AddAccountInput{
         AddAccountInput(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
     }
 

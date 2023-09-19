@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "57578FB8-7CD0-4BCE-A648-A5441B9CF0F7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "identifier" : "536DB8D82AAE0C740071AE07",
+        "name" : "DomainTests"
+      }
+    }
+  ],
+  "version" : 1
+}

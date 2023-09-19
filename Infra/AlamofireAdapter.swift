@@ -14,7 +14,7 @@ final public class AlamofireAdapter : HttpPostClientProtocol {
             method: .post,
             with: data)
 
-        try? await Task.sleep(nanoseconds: 5_000_000)
+//        try? await Task.sleep(nanoseconds: 5_000_000)
         let responseData = await self.session.request(request).serializingData().response
 
         guard let statusCode = responseData.response?.statusCode else {
@@ -24,8 +24,8 @@ final public class AlamofireAdapter : HttpPostClientProtocol {
         switch responseData.result {
         case .failure:
             return .failure(.noConnectivity)
-        case .success(_):// remove let data dur api has been down | original .success(let data)
-            return statucCodeResponseHandler(for: statusCode, data: data!)
+        case .success(let successData):
+            return statucCodeResponseHandler(for: statusCode, data: successData)
         }
     }
 }

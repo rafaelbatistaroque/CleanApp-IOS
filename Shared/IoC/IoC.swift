@@ -1,6 +1,6 @@
 import Foundation
 
-public class WeakVarProxy<T:AnyObject>{
+public final class WeakVarProxy<T:AnyObject>{
     public weak var instance: T?
 
     public init(_ instance:T){
@@ -24,14 +24,6 @@ public struct DependencyInjector{
 
         self.dependencies[String(describing: T.self)] = dependecy
         print("🔵 Provided ->", dependecy, "to \(T.self)")
-    }
-
-    public static func clear<T>(dependecy:T){
-        guard (dependencies[String(describing: T.self)] != nil) else {
-            fatalError("No clean type \(T.self)")
-        }
-
-        self.dependencies[String(describing: T.self)] = nil
     }
 }
 

@@ -4,12 +4,12 @@ import Shared
 
 class HttpClientSpy: HttpPostClientProtocol{
     var urls = [URL]()
-    var inputData: Data?
+    var data: Data? = nil
     var result: Result<Data?, HttpError> = .failure(HttpError.noConnectivity)
     
     func post(to url: URL, with data: Data?) async -> Result<Data?, HttpError> {
         self.urls.append(url)
-        self.inputData = data
+        self.data = data
 
         return result
     }
