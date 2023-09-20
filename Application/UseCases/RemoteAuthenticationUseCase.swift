@@ -23,7 +23,7 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
                 if let authenticationOutput: AuthenticationOutput = data?.toDTO(){
                     return .success(authenticationOutput)
                 }
-                return .failure(.expiredSession)
+                return .failure(.unexpected)
             default:
                 return .failure(.emailInUse)
         }
