@@ -113,6 +113,9 @@
 		53CAF43B2AA8ECD300C293D6 /* Fakes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 536037DF2AA6B17700004917 /* Fakes.swift */; };
 		53E1F23F2AB7D31300602C6C /* UseCasesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1F23E2AB7D31300602C6C /* UseCasesFactory.swift */; };
 		53E1F2442AB7D87700602C6C /* EnvironmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1F2432AB7D87700602C6C /* EnvironmentHelper.swift */; };
+		53E455F12ABB127B00AA677F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F02ABB127B00AA677F /* Authentication.swift */; };
+		53E455F32ABB131100AA677F /* AuthenticationOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F22ABB131100AA677F /* AuthenticationOutput.swift */; };
+		53E455F52ABB137600AA677F /* AuthenticationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F42ABB137600AA677F /* AuthenticationInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -405,6 +408,9 @@
 		53E1F2432AB7D87700602C6C /* EnvironmentHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentHelper.swift; sourceTree = "<group>"; };
 		53E1F2452AB7DA9400602C6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		53E1F24C2AB7E2CA00602C6C /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		53E455F02ABB127B00AA677F /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = Domain/UseCases/Authentication/Authentication.swift; sourceTree = SOURCE_ROOT; };
+		53E455F22ABB131100AA677F /* AuthenticationOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationOutput.swift; path = Domain/UseCases/Authentication/AuthenticationOutput.swift; sourceTree = SOURCE_ROOT; };
+		53E455F42ABB137600AA677F /* AuthenticationInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationInput.swift; path = Domain/UseCases/Authentication/AuthenticationInput.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -679,6 +685,7 @@
 		535859A82AA54C25008AE97C /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				53E455EF2ABB125300AA677F /* Authentication */,
 				5358595C2AA5203B008AE97C /* AddAccount */,
 			);
 			path = UseCases;
@@ -1038,6 +1045,16 @@
 				53C5C8512AB91F8200AB91FE /* SignUpPresenterComposerTests.swift */,
 			);
 			path = MainTests;
+			sourceTree = "<group>";
+		};
+		53E455EF2ABB125300AA677F /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				53E455F02ABB127B00AA677F /* Authentication.swift */,
+				53E455F22ABB131100AA677F /* AuthenticationOutput.swift */,
+				53E455F42ABB137600AA677F /* AuthenticationInput.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1580,15 +1597,18 @@
 			files = (
 				53C5C8352AB8ED3B00AB91FE /* RequiredFieldValidation.swift in Sources */,
 				53C5C82D2AB89B7D00AB91FE /* ValidateProtocol.swift in Sources */,
+				53E455F52ABB137600AA677F /* AuthenticationInput.swift in Sources */,
 				535859AB2AA55549008AE97C /* DomainError.swift in Sources */,
 				53C5C8432AB8FE1B00AB91FE /* EmailValidation.swift in Sources */,
 				5358595E2AA52058008AE97C /* AddAccountInput.swift in Sources */,
 				53A44A002A991012007DF156 /* AddAccountProtocol.swift in Sources */,
+				53E455F32ABB131100AA677F /* AuthenticationOutput.swift in Sources */,
 				535859602AA5206B008AE97C /* AddAccountOutput.swift in Sources */,
 				53C5C83C2AB8EFD500AB91FE /* CompareFieldsValidation.swift in Sources */,
 				536DB95A2AAE84AB0071AE07 /* GeneralMessages.swift in Sources */,
 				53C5C8492AB9112800AB91FE /* ValidationComposite.swift in Sources */,
 				536DB9582AAE785D0071AE07 /* AddAccountInputErrorMessage.swift in Sources */,
+				53E455F12ABB127B00AA677F /* Authentication.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

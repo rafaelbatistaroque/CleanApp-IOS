@@ -24,8 +24,4 @@ public final class SignUpPresenterComposer{
             CompareFieldValidation(fieldName: "password", fieldNameToCompare: "passwordConfirmation", fieldLabel: "Confirmar Senha")
         ]
     }
-
-    deinit{
-        print("deinit SignUpPresenterFactory")
-    }
 }
