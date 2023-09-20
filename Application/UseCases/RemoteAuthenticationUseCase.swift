@@ -17,6 +17,8 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
         switch resultPost {
             case .failure(.noConnectivity):
                 return .failure(.unexpected)
+            case .failure(.unauthorized):
+                return .failure(.expiredSession)
             default:
                 return .failure(.emailInUse)
         }

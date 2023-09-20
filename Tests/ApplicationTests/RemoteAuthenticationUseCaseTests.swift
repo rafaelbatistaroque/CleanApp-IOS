@@ -47,4 +47,18 @@ final class RemoteAuthenticationUseCaseTests: XCTestCase {
             beEqual: .failure(.unexpected))
     }
 
+    func test_givenRemoteAuthentication_whenUnauthorizedFailsHttpPostClient_thenMustBeReturnResultSessionExpired() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.resultDefined(with: .failure(.unauthorized))
+
+        //act
+        let result = await sut.handle(input: fakeAuthenticationInputValid())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(DomainError.expiredSession))
+    }
+
 }
