@@ -12,7 +12,7 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
     }
 
     public func handle(input: AuthenticationInput) async -> AuthenticationResult {
-        await httpClient.post(to: self.url, with: nil)
+        await httpClient.post(to: self.url, with: input.toData())
 
         return .failure(.unexpected)
     }
