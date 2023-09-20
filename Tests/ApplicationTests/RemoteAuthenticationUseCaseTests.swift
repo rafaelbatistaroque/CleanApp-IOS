@@ -61,4 +61,20 @@ final class RemoteAuthenticationUseCaseTests: XCTestCase {
             beEqual: .failure(DomainError.expiredSession))
     }
 
+    func test_givenRemoteAuthentication_whenSuccessHttpPostClient_thenMustBeReturnResultData() async{
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        let expectedAccountOutput = fakeAuthenticationOutput();
+        httpClientSpy.resultDefined(with: .success(expectedAccountOutput.toData()!))
+
+        //act
+        let result = await sut.handle(input: fakeAuthenticationInputValid())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .success(expectedAccountOutput)
+        )
+    }
+
 }

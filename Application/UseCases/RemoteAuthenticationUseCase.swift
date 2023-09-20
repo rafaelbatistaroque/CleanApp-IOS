@@ -19,6 +19,11 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
                 return .failure(.unexpected)
             case .failure(.unauthorized):
                 return .failure(.expiredSession)
+            case .success(let data):
+                if let authenticationOutput: AuthenticationOutput = data?.toDTO(){
+                    return .success(authenticationOutput)
+                }
+                return .failure(.expiredSession)
             default:
                 return .failure(.emailInUse)
         }
