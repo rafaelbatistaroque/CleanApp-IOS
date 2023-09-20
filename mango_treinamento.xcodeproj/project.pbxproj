@@ -116,6 +116,9 @@
 		53E455F12ABB127B00AA677F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F02ABB127B00AA677F /* Authentication.swift */; };
 		53E455F32ABB131100AA677F /* AuthenticationOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F22ABB131100AA677F /* AuthenticationOutput.swift */; };
 		53E455F52ABB137600AA677F /* AuthenticationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F42ABB137600AA677F /* AuthenticationInput.swift */; };
+		53E455F72ABB14A400AA677F /* RemoteAuthenticationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F62ABB14A400AA677F /* RemoteAuthenticationUseCase.swift */; };
+		53E455F92ABB152500AA677F /* RemoteAuthenticationUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F82ABB152500AA677F /* RemoteAuthenticationUseCaseTests.swift */; };
+		53E455FB2ABB15B700AA677F /* RemoteAuthenticationUseCaseTestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455FA2ABB15B700AA677F /* RemoteAuthenticationUseCaseTestsExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -411,6 +414,9 @@
 		53E455F02ABB127B00AA677F /* Authentication.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Authentication.swift; path = Domain/UseCases/Authentication/Authentication.swift; sourceTree = SOURCE_ROOT; };
 		53E455F22ABB131100AA677F /* AuthenticationOutput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationOutput.swift; path = Domain/UseCases/Authentication/AuthenticationOutput.swift; sourceTree = SOURCE_ROOT; };
 		53E455F42ABB137600AA677F /* AuthenticationInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AuthenticationInput.swift; path = Domain/UseCases/Authentication/AuthenticationInput.swift; sourceTree = SOURCE_ROOT; };
+		53E455F62ABB14A400AA677F /* RemoteAuthenticationUseCase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAuthenticationUseCase.swift; sourceTree = "<group>"; };
+		53E455F82ABB152500AA677F /* RemoteAuthenticationUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RemoteAuthenticationUseCaseTests.swift; path = Tests/ApplicationTests/RemoteAuthenticationUseCaseTests.swift; sourceTree = SOURCE_ROOT; };
+		53E455FA2ABB15B700AA677F /* RemoteAuthenticationUseCaseTestsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteAuthenticationUseCaseTestsExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -647,6 +653,7 @@
 				536037DE2AA6B13800004917 /* Helpers */,
 				536037DB2AA6967200004917 /* Extensions */,
 				5358598E2AA52203008AE97C /* RemoteAddAccountUseCaseTests.swift */,
+				53E455F82ABB152500AA677F /* RemoteAuthenticationUseCaseTests.swift */,
 			);
 			path = ApplicationTests;
 			sourceTree = "<group>";
@@ -670,6 +677,7 @@
 			isa = PBXGroup;
 			children = (
 				535859A32AA54AB0008AE97C /* RemoteAddAccountUseCase.swift */,
+				53E455F62ABB14A400AA677F /* RemoteAuthenticationUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -713,6 +721,7 @@
 			isa = PBXGroup;
 			children = (
 				536037E32AA6B2DE00004917 /* RemoteAddAccountUseCaseTestsExtensions.swift */,
+				53E455FA2ABB15B700AA677F /* RemoteAuthenticationUseCaseTestsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1529,6 +1538,7 @@
 				535859A72AA54B26008AE97C /* HttpPostClientProtocol.swift in Sources */,
 				53B71B8A2AAD3495004A2C9A /* RemoteAddAccountUseCase.swift in Sources */,
 				535859AE2AA566FF008AE97C /* HttpError.swift in Sources */,
+				53E455F72ABB14A400AA677F /* RemoteAuthenticationUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1629,8 +1639,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				535491E42AB9C55000AC9BB8 /* ApplicationFake.swift in Sources */,
+				53E455F92ABB152500AA677F /* RemoteAuthenticationUseCaseTests.swift in Sources */,
 				536802222AAA8D1F0003EC62 /* XCTestCaseExtensions.swift in Sources */,
 				53CAF40C2AA8DC6100C293D6 /* RemoteAddAccountUseCaseTests.swift in Sources */,
+				53E455FB2ABB15B700AA677F /* RemoteAuthenticationUseCaseTestsExtensions.swift in Sources */,
 				53CAF40D2AA8DC6700C293D6 /* HttpClientSpy.swift in Sources */,
 				53CAF4102AA8DC7100C293D6 /* Fakes.swift in Sources */,
 				53CAF40F2AA8DC6F00C293D6 /* UrlProtocolStub.swift in Sources */,
