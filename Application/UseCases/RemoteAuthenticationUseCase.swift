@@ -12,9 +12,14 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
     }
 
     public func handle(input: AuthenticationInput) async -> AuthenticationResult {
-        await httpClient.post(to: self.url, with: input.toData())
+        let resultPost = await httpClient.post(to: self.url, with: input.toData())
 
-        return .failure(.unexpected)
+        switch resultPost {
+            case .failure(.noConnectivity):
+                return .failure(.unexpected)
+            default:
+                return .failure(.emailInUse)
+        }
     }
 }
 

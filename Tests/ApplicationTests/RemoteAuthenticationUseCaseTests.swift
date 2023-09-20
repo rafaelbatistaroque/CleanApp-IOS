@@ -33,4 +33,18 @@ final class RemoteAuthenticationUseCaseTests: XCTestCase {
             beEqual: expectedContent)
     }
 
+    func test_givenRemoteAuthentication_whenNoConnectivityFailsHttpPostClient_thenMustBeReturnResultUnexpectedError() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.resultDefined(with: .failure(.noConnectivity))
+
+        //act
+        let result = await sut.handle(input: fakeAuthenticationInputValid())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(.unexpected))
+    }
+
 }
