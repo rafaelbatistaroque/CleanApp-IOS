@@ -91,4 +91,17 @@ final class RemoteAuthenticationUseCaseTests: XCTestCase {
             beEqual: .failure(.unexpected))
     }
 
+    func test_givenRemoteAuthentication_whenAnythingErrorFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
+        //arrange
+        let (sut, httpClientSpy) = createSUT()
+        httpClientSpy.resultDefined(with: .failure(.badRequest))
+
+        //act
+        let result = await sut.handle(input: fakeAuthenticationInputValid())
+
+        //assert
+        expect(
+            should: result,
+            beEqual: .failure(.unexpected))
+    }
 }

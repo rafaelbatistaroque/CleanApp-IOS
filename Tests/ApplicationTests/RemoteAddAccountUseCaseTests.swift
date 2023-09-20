@@ -43,7 +43,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //assert
         expect(
             should: result,
-            beEqual: .failure(DomainError.unexpected))
+            beEqual: .failure(.unexpected))
     }
 
     func test_givenAddAccount_whenForbidenFailsHttpPostClient_thenMustBeReturnResultEmailInUse() async {
@@ -57,7 +57,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //assert
         expect(
             should: result,
-            beEqual: .failure(DomainError.emailInUse))
+            beEqual: .failure(.emailInUse))
     }
 
     func test_givenAddAccount_whenSuccessHttpPostClient_thenMustBeReturnResultData() async{
@@ -87,7 +87,7 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //assert
         expect(
             should: result,
-            beEqual: .failure(DomainError.unexpected))
+            beEqual: .failure(.unexpected))
     }
 
     func test_givenAddAccount_whenAnythingErrorFromHttpPostClient_thenMustBeReturnResultUnexpected() async {
@@ -101,6 +101,6 @@ final class RemoteAddAccountUseCaseTests: XCTestCase {
         //assert
         expect(
             should: result,
-            beEqual: .failure(DomainError.unexpected))
+            beEqual: .failure(.unexpected))
     }
 }

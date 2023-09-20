@@ -25,7 +25,7 @@ public final class RemoteAuthenticationUseCase: AuthenticationProtocol {
                 }
                 return .failure(.unexpected)
             default:
-                return .failure(.emailInUse)
+                return .failure(.unexpected)
         }
     }
 }
