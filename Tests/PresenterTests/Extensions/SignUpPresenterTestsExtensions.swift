@@ -4,17 +4,17 @@ import Domain
 import Shared
 
 extension SignUpPresenterTests {
-    func createSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SignUpPresenter, addAccount: AddAccountSpy, validate: SignUpPresenterValidateSpy){
+    func createSut(file: StaticString = #filePath, line: UInt = #line) -> (sut: SignUpPresenter, addAccount: AddAccountSpy, validate: PresenterValidateSpy){
         let addAccountSpy = AddAccountSpy()
-        let signUpPresenterValidate = SignUpPresenterValidateSpy()
+        let presenterValidate = PresenterValidateSpy()
 
         @Provider var addAccountProvided = addAccountSpy as AddAccountProtocol
-        @Provider var signUpPresenterValidateProvided = signUpPresenterValidate as ValidateProtocol
+        @Provider var presenterValidateProvided = presenterValidate as ValidateProtocol
 
         let sut = SignUpPresenter()
 
         checkMemoryLeak(for: sut)
 
-        return (sut, addAccountSpy, signUpPresenterValidate)
+        return (sut, addAccountSpy, presenterValidate)
     }
 }

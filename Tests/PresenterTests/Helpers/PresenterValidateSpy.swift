@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-class SignUpPresenterValidateSpy: ValidateProtocol {
+class PresenterValidateSpy: ValidateProtocol {
     var data:[String: Any]?
     var result:[String] = []
 

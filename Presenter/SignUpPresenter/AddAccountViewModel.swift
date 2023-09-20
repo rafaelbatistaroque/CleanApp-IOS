@@ -2,7 +2,7 @@ import Foundation
 import Shared
 import Domain
 
-public class AddAccountViewModel: ObservableObject, DTOProtocol {
+public class AddAccountViewModel: DTOProtocol {
     public var name: String? = nil
     public var email: String? = nil
     public var password: String? = nil

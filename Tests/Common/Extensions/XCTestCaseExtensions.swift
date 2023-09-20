@@ -22,8 +22,12 @@ extension XCTestCase {
         XCTAssertTrue(value, file: file, line: line)
     }
 
-    func noExpect<T>(item:T, file: StaticString = #filePath, line: UInt = #line) {
-        XCTFail("No expected \(item) result", file: file, line: line)
+    func noExpect<T>(to item:T, file: StaticString = #filePath, line: UInt = #line) {
+        XCTFail("No expected \(item) result ", file: file, line: line)
+    }
+
+    func noExpect(file: StaticString = #filePath, line: UInt = #line) {
+        XCTFail("No expected result ", file: file, line: line)
     }
 
     func checkMemoryLeak(for instance: AnyObject, file: StaticString = #filePath, line: UInt = #line){

@@ -60,11 +60,11 @@ struct SignUpView: View {
             //MARK: - Alerts
             .alert(isPresented: $presenter.isShowAlert) {
                 switch presenter.state {
-                    case .success(let alert,_):
-                        Alert(title: Text(alert.title), message: Text(alert.message),
+                    case .success(let alertSuccess, _):
+                        Alert(title: Text(alertSuccess.title), message: Text(alertSuccess.message),
                               dismissButton: .default(Text("Ok"), action: { clearFields(); enableControls() }))
-                    case .failure(let error):
-                        Alert(title: Text(error.title), message: Text("\(error.message)"),
+                    case .failure(let alertError, _):
+                        Alert(title: Text(alertError.title), message: Text("\(alertError.message)"),
                               primaryButton: .default(Text("Ok"), action: { enableControls() }),
                               secondaryButton: .destructive(Text("Clear Fields"), action: { enableControls(); clearFields() }))
                     default:
