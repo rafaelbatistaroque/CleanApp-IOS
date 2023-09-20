@@ -2,5 +2,6 @@ import Foundation
 import Shared
 
 public protocol AddAccountProtocol{
-    func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError>
+    typealias AddAccountResult = Result<AddAccountOutput, DomainError>
+    func handle(input: AddAccountInput) async -> AddAccountResult
 }

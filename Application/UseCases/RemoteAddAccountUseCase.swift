@@ -10,7 +10,7 @@ public final class RemoteAddAccountUseCase: AddAccountProtocol {
         self.url = url
     }
     
-    public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
+    public func handle(input: AddAccountInput) async -> AddAccountResult {
         let resultPost = await self.httpClient.post(to: self.url, with: input.toData())
 
         switch resultPost {
