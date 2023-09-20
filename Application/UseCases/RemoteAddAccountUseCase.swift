@@ -11,7 +11,6 @@ public final class RemoteAddAccountUseCase: AddAccountProtocol {
     }
     
     public func handle(input: AddAccountInput) async -> Result<AddAccountOutput, DomainError> {
-        //let outputMock = AddAccountOutput(id: UUID().uuidString, name: account.name, email: account.email, password: account.password)
         let resultPost = await self.httpClient.post(to: self.url, with: input.toData())
 
         switch resultPost {
