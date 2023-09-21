@@ -2,9 +2,9 @@ import Foundation
 import Shared
 import Domain
 
-public final class LoginPresenter: LoginPresenterProtocol{
+public final class LoginPresenter: ObservableObject, LoginPresenterProtocol{
     @Inject public var authentication: AuthenticationProtocol
-    @Inject public var validation: any ValidateProtocol
+    @Inject public var validation: ValidateProtocol
 
     @Published public var state: StatePresenter<AuthenticationOutput, Void> = .idle
     @Published public var isShowAlert: Bool = false

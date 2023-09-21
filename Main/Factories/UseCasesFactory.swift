@@ -19,4 +19,11 @@ class UseCasesFactory {
 
         return  RemoteAddAccountUseCase(url: makeUrl(path: "signup"))
     }
+
+    static func remoteAutenticationfactory() -> RemoteAuthenticationUseCase {
+        @Provider var httpClientProvided = httpClient
+        @Provider var alamofireAdapterProvided = httpClientAdapter as HttpPostClientProtocol
+
+        return  RemoteAuthenticationUseCase(url: makeUrl(path: "login"))
+    }
 }

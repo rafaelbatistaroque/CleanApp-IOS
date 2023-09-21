@@ -4,7 +4,8 @@ import SwiftUI
 struct MainApp: App {
     var body: some Scene {
         WindowGroup {
-            SignUpView(presenter: SignUpPresenterComposer.factory())
+//            SignUpView(presenter: SignUpPresenterComposer.factory())
+            LoginView(presenter: LoginPresenterComposer.factory())
         }
     }
 }

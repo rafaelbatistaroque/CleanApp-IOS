@@ -119,6 +119,14 @@
 		53D942322ABBA0130036CABE /* AuthenticationSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942302ABB9F920036CABE /* AuthenticationSpy.swift */; };
 		53D942342ABBAA860036CABE /* AddAccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942332ABBAA860036CABE /* AddAccountViewModelTests.swift */; };
 		53D942362ABBAAD20036CABE /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942352ABBAAD20036CABE /* AuthenticationViewModelTests.swift */; };
+		53D942392ABBB8610036CABE /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942382ABBB8610036CABE /* LoginView.swift */; };
+		53D9423C2ABBB9FA0036CABE /* CustomSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9423B2ABBB9FA0036CABE /* CustomSecureFieldView.swift */; };
+		53D9423E2ABBBA2A0036CABE /* LogoAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9423D2ABBBA2A0036CABE /* LogoAppView.swift */; };
+		53D942402ABBBA610036CABE /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D9423F2ABBBA610036CABE /* CustomTextFieldView.swift */; };
+		53D942422ABBBAAB0036CABE /* TitleScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942412ABBBAAB0036CABE /* TitleScreenView.swift */; };
+		53D942442ABBBF170036CABE /* LoginPresenterComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942432ABBBF170036CABE /* LoginPresenterComposerTests.swift */; };
+		53D942462ABBBF400036CABE /* LoginPresenterComposerTestsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942452ABBBF400036CABE /* LoginPresenterComposerTestsExtensions.swift */; };
+		53D942482ABBC0250036CABE /* LoginPresenterComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53D942472ABBC0250036CABE /* LoginPresenterComposer.swift */; };
 		53E1F23F2AB7D31300602C6C /* UseCasesFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1F23E2AB7D31300602C6C /* UseCasesFactory.swift */; };
 		53E1F2442AB7D87700602C6C /* EnvironmentHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E1F2432AB7D87700602C6C /* EnvironmentHelper.swift */; };
 		53E455F12ABB127B00AA677F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E455F02ABB127B00AA677F /* Authentication.swift */; };
@@ -363,8 +371,6 @@
 		536037DF2AA6B17700004917 /* Fakes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fakes.swift; sourceTree = "<group>"; };
 		536037E12AA6B1BB00004917 /* HttpClientSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientSpy.swift; sourceTree = "<group>"; };
 		536037E32AA6B2DE00004917 /* RemoteAddAccountUseCaseTestsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccountUseCaseTestsExtensions.swift; sourceTree = "<group>"; };
-		5368022D2AAAA3D60003EC62 /* UIControlExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIControlExtensions.swift; sourceTree = "<group>"; };
-		536802342AAAA4420003EC62 /* SignUpViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerExtensions.swift; sourceTree = "<group>"; };
 		536DB8D92AAE0C740071AE07 /* DomainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DomainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		536DB8EC2AAE4C0A0071AE07 /* Presenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Presenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		536DB8F32AAE4C0A0071AE07 /* PresenterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PresenterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -421,6 +427,14 @@
 		53D942302ABB9F920036CABE /* AuthenticationSpy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationSpy.swift; sourceTree = "<group>"; };
 		53D942332ABBAA860036CABE /* AddAccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountViewModelTests.swift; sourceTree = "<group>"; };
 		53D942352ABBAAD20036CABE /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
+		53D942382ABBB8610036CABE /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginView.swift; path = Main/UI/Screens/Login/LoginView.swift; sourceTree = SOURCE_ROOT; };
+		53D9423B2ABBB9FA0036CABE /* CustomSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureFieldView.swift; sourceTree = "<group>"; };
+		53D9423D2ABBBA2A0036CABE /* LogoAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoAppView.swift; sourceTree = "<group>"; };
+		53D9423F2ABBBA610036CABE /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		53D942412ABBBAAB0036CABE /* TitleScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleScreenView.swift; sourceTree = "<group>"; };
+		53D942432ABBBF170036CABE /* LoginPresenterComposerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterComposerTests.swift; sourceTree = "<group>"; };
+		53D942452ABBBF400036CABE /* LoginPresenterComposerTestsExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterComposerTestsExtensions.swift; sourceTree = "<group>"; };
+		53D942472ABBC0250036CABE /* LoginPresenterComposer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenterComposer.swift; sourceTree = "<group>"; };
 		53E1F23E2AB7D31300602C6C /* UseCasesFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCasesFactory.swift; sourceTree = "<group>"; };
 		53E1F2412AB7D78300602C6C /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		53E1F2422AB7D7D600602C6C /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
@@ -567,7 +581,6 @@
 				53CAF4252AA8E19C00C293D6 /* CI.xctestplan */,
 				531132B42AA7924B00F4B101 /* Common */,
 				53E1F24D2AB7E2CA00602C6C /* MainTests */,
-				53539AE52AAA43E100973A35 /* UITests */,
 				536DB8F72AAE4C0A0071AE07 /* PresenterTests */,
 				536DB8DA2AAE0C740071AE07 /* DomainTests */,
 				5358598D2AA52203008AE97C /* ApplicationTests */,
@@ -632,15 +645,6 @@
 				534F604A2ABA72F4005B7D8D /* UseCasesIntegrationTestsExtensions.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		53539AE52AAA43E100973A35 /* UITests */ = {
-			isa = PBXGroup;
-			children = (
-				536DB8E32AAE263D0071AE07 /* Helpers */,
-				5368021F2AAA88D60003EC62 /* Extensions */,
-			);
-			path = UITests;
 			sourceTree = "<group>";
 		};
 		5358595C2AA5203B008AE97C /* AddAccount */ = {
@@ -751,15 +755,6 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		5368021F2AAA88D60003EC62 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				5368022D2AAAA3D60003EC62 /* UIControlExtensions.swift */,
-				536802342AAAA4420003EC62 /* SignUpViewControllerExtensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		5368022C2AAAA3AF0003EC62 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -788,13 +783,6 @@
 				53C5C8462AB908E400AB91FE /* ValidationCompositeTests.swift */,
 			);
 			path = DomainTests;
-			sourceTree = "<group>";
-		};
-		536DB8E32AAE263D0071AE07 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
 			sourceTree = "<group>";
 		};
 		536DB8ED2AAE4C0A0071AE07 /* Presenter */ = {
@@ -888,6 +876,8 @@
 		537306812AB6082E004E322C /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				53D9423A2ABBB9DE0036CABE /* Commons */,
+				53D942372ABBB8470036CABE /* Login */,
 				5368022C2AAAA3AF0003EC62 /* SignUp */,
 			);
 			path = Screens;
@@ -1039,6 +1029,7 @@
 			isa = PBXGroup;
 			children = (
 				53C5C8572AB9342D00AB91FE /* SignUpPresenterComposerTestsExtensions.swift */,
+				53D942452ABBBF400036CABE /* LoginPresenterComposerTestsExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1061,10 +1052,30 @@
 			path = LoginPresenter;
 			sourceTree = "<group>";
 		};
+		53D942372ABBB8470036CABE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				53D942382ABBB8610036CABE /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		53D9423A2ABBB9DE0036CABE /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				53D9423B2ABBB9FA0036CABE /* CustomSecureFieldView.swift */,
+				53D9423D2ABBBA2A0036CABE /* LogoAppView.swift */,
+				53D9423F2ABBBA610036CABE /* CustomTextFieldView.swift */,
+				53D942412ABBBAAB0036CABE /* TitleScreenView.swift */,
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
 		53E1F23D2AB7D21700602C6C /* Composers */ = {
 			isa = PBXGroup;
 			children = (
 				53BE7BAA2AAF7FAF00D9A028 /* SignUpPresenterComposer.swift */,
+				53D942472ABBC0250036CABE /* LoginPresenterComposer.swift */,
 			);
 			path = Composers;
 			sourceTree = "<group>";
@@ -1084,6 +1095,7 @@
 			children = (
 				53C5C8562AB9341800AB91FE /* Extensions */,
 				53C5C8512AB91F8200AB91FE /* SignUpPresenterComposerTests.swift */,
+				53D942432ABBBF170036CABE /* LoginPresenterComposerTests.swift */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -1633,11 +1645,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53D942392ABBB8610036CABE /* LoginView.swift in Sources */,
+				53D9423E2ABBBA2A0036CABE /* LogoAppView.swift in Sources */,
 				539820202AB118D8004DF741 /* SignUpPresenterComposer.swift in Sources */,
+				53D942482ABBC0250036CABE /* LoginPresenterComposer.swift in Sources */,
 				53E1F23F2AB7D31300602C6C /* UseCasesFactory.swift in Sources */,
 				539820292AB11E1B004DF741 /* SignUpView.swift in Sources */,
+				53D9423C2ABBB9FA0036CABE /* CustomSecureFieldView.swift in Sources */,
 				53981FF92AB11859004DF741 /* MainApp.swift in Sources */,
 				53E1F2442AB7D87700602C6C /* EnvironmentHelper.swift in Sources */,
+				53D942402ABBBA610036CABE /* CustomTextFieldView.swift in Sources */,
+				53D942422ABBBAAB0036CABE /* TitleScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1722,6 +1740,8 @@
 				53C5C8542AB9207E00AB91FE /* UrlProtocolStub.swift in Sources */,
 				53C5C8532AB9207E00AB91FE /* XCTestCaseExtensions.swift in Sources */,
 				53C5C8582AB9342D00AB91FE /* SignUpPresenterComposerTestsExtensions.swift in Sources */,
+				53D942462ABBBF400036CABE /* LoginPresenterComposerTestsExtensions.swift in Sources */,
+				53D942442ABBBF170036CABE /* LoginPresenterComposerTests.swift in Sources */,
 				53C5C8522AB91F8200AB91FE /* SignUpPresenterComposerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2177,6 +2197,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 4Dev;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -2211,6 +2233,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Main/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = 4Dev;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

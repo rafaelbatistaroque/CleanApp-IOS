@@ -4,7 +4,7 @@ import Domain
 
 public final class SignUpPresenter: ObservableObject, SignUpPresenterProtocol {
     @Inject public var addAccount: AddAccountProtocol
-    @Inject public var validation: any ValidateProtocol
+    @Inject public var validation: ValidateProtocol
 
     @Published public var state: StatePresenter<AddAccountOutput, Void> = .idle
     @Published public var isShowAlert: Bool = false

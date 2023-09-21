@@ -2,34 +2,29 @@ import SwiftUI
 import Presenter
 import Shared
 
-struct SignUpView: View {
-    @StateObject var presenter: SignUpPresenter
+struct LoginView: View {
+    @StateObject var presenter: LoginPresenter
 
-    @State var name:String = ""
     @State var email:String = ""
     @State var password:String = ""
-    @State var passwordConfirmation:String = ""
     @State var isDisabledControl:Bool = false
 
     var body: some View {
         NavigationStack {
             VStack {
                 LogoAppView()
-                TitleScreenView(titleName: "CADASTRO")
+                TitleScreenView(titleName: "LOGIN")
 
                 VStack(spacing: 16){
 
                     //MARK: - Fields
-                    CustomTextFieldView(prompt: "Name", bindingContent: $name, bindingIsDisabledControl: $isDisabledControl)
-                        .keyboardType(.default)
                     CustomTextFieldView(prompt: "E-mail", bindingContent: $email, bindingIsDisabledControl: $isDisabledControl)
                         .keyboardType(.emailAddress)
 
                     CustomSecureFieldView(prompt: "Password", bindingContent: $password, bindingIsDisabledControl: $isDisabledControl)
-                    CustomSecureFieldView(prompt: "Password Confirmation", bindingContent: $passwordConfirmation, bindingIsDisabledControl: $isDisabledControl)
 
                     //MARK: - Button criate account
-                    Button("CRIAR CONTA"){
+                    Button("ENTRAR"){
                         self.isDisabledControl = true
                         signUp()
                     }
@@ -92,25 +87,21 @@ struct SignUpView: View {
 
     func signUp(){
         Task{
-            await presenter.signUp(
-                viewModel: AddAccountViewModel(
-                    name: name,
+            await presenter.login(
+                viewModel: AuthenticationViewModel(
                     email: email,
-                    password: password,
-                    passwordConfirmation: passwordConfirmation))
+                    password: password))
         }
     }
 
     func clearFields(){
-        self.name = ""
         self.email = ""
         self.password = ""
-        self.passwordConfirmation = ""
     }
 }
 
-struct SignUpView_Previews: PreviewProvider {
+struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(presenter: SignUpPresenterComposer.factory())
+        LoginView(presenter: LoginPresenterComposer.factory())
     }
 }
