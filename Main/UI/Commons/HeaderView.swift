@@ -1,7 +1,7 @@
 import SwiftUI
 import Shared
 
-struct LogoAppView: View {
+struct HeaderView: View {
     var body: some View {
         VStack{
             Image("logo")

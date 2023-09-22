@@ -25,6 +25,10 @@ public struct DependencyInjector{
         self.dependencies[String(describing: T.self)] = dependecy
         print("🔵 Provided ->", dependecy, "to \(T.self)")
     }
+
+    public static func countList() -> Int {
+        self.dependencies.count
+    }
 }
 
 @propertyWrapper public class Inject<T>{

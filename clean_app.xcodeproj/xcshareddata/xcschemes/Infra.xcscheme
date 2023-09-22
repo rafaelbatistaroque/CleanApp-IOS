@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53981FF52AB11859004DF741"
-               BuildableName = "Main.app"
-               BlueprintName = "Main"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "531132972AA7907600F4B101"
+               BuildableName = "Infra.framework"
+               BlueprintName = "Infra"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,10 +34,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53E1F24B2AB7E2CA00602C6C"
-               BuildableName = "MainTests.xctest"
-               BlueprintName = "MainTests"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "53CAF4142AA8DCA000C293D6"
+               BuildableName = "InfraTests.xctest"
+               BlueprintName = "InfraTests"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -52,16 +52,6 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53981FF52AB11859004DF741"
-            BuildableName = "Main.app"
-            BlueprintName = "Main"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -69,16 +59,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53981FF52AB11859004DF741"
-            BuildableName = "Main.app"
-            BlueprintName = "Main"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
+            BlueprintIdentifier = "531132972AA7907600F4B101"
+            BuildableName = "Infra.framework"
+            BlueprintName = "Infra"
+            ReferencedContainer = "container:clean_app.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

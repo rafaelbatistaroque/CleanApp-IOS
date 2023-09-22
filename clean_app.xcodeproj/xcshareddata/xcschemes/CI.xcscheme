@@ -17,7 +17,7 @@
                BlueprintIdentifier = "53981FF52AB11859004DF741"
                BuildableName = "Main.app"
                BlueprintName = "Main"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
                BuildableName = "Presenter.framework"
                BlueprintName = "Presenter"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -45,7 +45,7 @@
                BlueprintIdentifier = "53A449F72A990C8D007DF156"
                BuildableName = "Domain.framework"
                BlueprintName = "Domain"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -59,7 +59,7 @@
                BlueprintIdentifier = "535859812AA52202008AE97C"
                BuildableName = "Application.framework"
                BlueprintName = "Application"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -73,7 +73,7 @@
                BlueprintIdentifier = "531132972AA7907600F4B101"
                BuildableName = "Infra.framework"
                BlueprintName = "Infra"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -82,13 +82,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:Tests/CI.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -113,7 +108,7 @@
             BlueprintIdentifier = "53A449F72A990C8D007DF156"
             BuildableName = "Domain.framework"
             BlueprintName = "Domain"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
+            ReferencedContainer = "container:clean_app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

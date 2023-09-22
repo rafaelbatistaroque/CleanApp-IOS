@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
-               BuildableName = "Presenter.framework"
-               BlueprintName = "Presenter"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "535859812AA52202008AE97C"
+               BuildableName = "Application.framework"
+               BlueprintName = "Application"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,10 +34,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "536DB8F22AAE4C0A0071AE07"
-               BuildableName = "PresenterTests.xctest"
-               BlueprintName = "PresenterTests"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "53CAF4002AA8DC2D00C293D6"
+               BuildableName = "ApplicationTests.xctest"
+               BlueprintName = "ApplicationTests"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -62,10 +62,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
-            BuildableName = "Presenter.framework"
-            BlueprintName = "Presenter"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
+            BlueprintIdentifier = "535859812AA52202008AE97C"
+            BuildableName = "Application.framework"
+            BlueprintName = "Application"
+            ReferencedContainer = "container:clean_app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

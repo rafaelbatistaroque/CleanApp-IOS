@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53A449F72A990C8D007DF156"
-               BuildableName = "Domain.framework"
-               BlueprintName = "Domain"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
+               BuildableName = "Presenter.framework"
+               BlueprintName = "Presenter"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -26,13 +26,21 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <TestPlans>
-         <TestPlanReference
-            reference = "container:Tests/DomainTests/Domain.xctestplan"
-            default = "YES">
-         </TestPlanReference>
-      </TestPlans>
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "536DB8F22AAE4C0A0071AE07"
+               BuildableName = "PresenterTests.xctest"
+               BlueprintName = "PresenterTests"
+               ReferencedContainer = "container:clean_app.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -54,10 +62,10 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "53A449F72A990C8D007DF156"
-            BuildableName = "Domain.framework"
-            BlueprintName = "Domain"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
+            BlueprintIdentifier = "536DB8EB2AAE4C0A0071AE07"
+            BuildableName = "Presenter.framework"
+            BlueprintName = "Presenter"
+            ReferencedContainer = "container:clean_app.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

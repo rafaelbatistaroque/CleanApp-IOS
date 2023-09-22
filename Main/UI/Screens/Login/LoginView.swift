@@ -4,6 +4,7 @@ import Shared
 
 struct LoginView: View {
     @StateObject var presenter: LoginPresenter
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var email:String = ""
     @State var password:String = ""
@@ -12,8 +13,8 @@ struct LoginView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                LogoAppView()
-                TitleScreenView(titleName: "LOGIN")
+                HeaderView()
+                TitleScreenView(titleName: "LOGIN", color: CustomColor.primaryDark)
 
                 VStack(spacing: 16){
 
@@ -69,6 +70,15 @@ struct LoginView: View {
             }
             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(.white)
+            .navigationBarBackButtonHidden()
+            .navigationBarItems(leading: Image(systemName: "chevron.backward")
+                .foregroundColor(.white).fontWeight(.semibold)
+                .padding(.vertical, 16)
+                .padding(.trailing, 28)
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            )
             .navigationTitle("ForDev")
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)

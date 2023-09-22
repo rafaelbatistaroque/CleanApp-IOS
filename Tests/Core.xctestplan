@@ -1,7 +1,7 @@
 {
   "configurations" : [
     {
-      "id" : "3C90B3A9-9C12-4A98-86E9-734DDCCFDC45",
+      "id" : "6317903B-365A-48A2-86D5-B159B2958BC8",
       "name" : "Configuration",
       "options" : {
 
@@ -12,22 +12,22 @@
     "codeCoverage" : {
       "targets" : [
         {
-          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "containerPath" : "container:clean_app.xcodeproj",
           "identifier" : "53CAF4142AA8DCA000C293D6",
           "name" : "InfraTests"
         },
         {
-          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "containerPath" : "container:clean_app.xcodeproj",
           "identifier" : "53CAF4002AA8DC2D00C293D6",
           "name" : "ApplicationTests"
         },
         {
-          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "containerPath" : "container:clean_app.xcodeproj",
           "identifier" : "536DB8D82AAE0C740071AE07",
           "name" : "DomainTests"
         },
         {
-          "containerPath" : "container:mango_treinamento.xcodeproj",
+          "containerPath" : "container:clean_app.xcodeproj",
           "identifier" : "536DB8F22AAE4C0A0071AE07",
           "name" : "PresenterTests"
         }
@@ -36,33 +36,29 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "containerPath" : "container:clean_app.xcodeproj",
         "identifier" : "53CAF4002AA8DC2D00C293D6",
         "name" : "ApplicationTests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "containerPath" : "container:clean_app.xcodeproj",
         "identifier" : "536DB8D82AAE0C740071AE07",
         "name" : "DomainTests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "containerPath" : "container:clean_app.xcodeproj",
         "identifier" : "53CAF4142AA8DCA000C293D6",
         "name" : "InfraTests"
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:mango_treinamento.xcodeproj",
+        "containerPath" : "container:clean_app.xcodeproj",
         "identifier" : "536DB8F22AAE4C0A0071AE07",
         "name" : "PresenterTests"
       }

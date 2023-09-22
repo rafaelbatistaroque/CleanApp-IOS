@@ -5,22 +5,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <BuildActionEntries>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "535859812AA52202008AE97C"
-               BuildableName = "Application.framework"
-               BlueprintName = "Application"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-      </BuildActionEntries>
    </BuildAction>
    <TestAction
       buildConfiguration = "Debug"
@@ -34,10 +18,10 @@
             parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "53CAF4002AA8DC2D00C293D6"
-               BuildableName = "ApplicationTests.xctest"
-               BlueprintName = "ApplicationTests"
-               ReferencedContainer = "container:mango_treinamento.xcodeproj">
+               BlueprintIdentifier = "53CAF4292AA8E97400C293D6"
+               BuildableName = "UseCasesIntegrationTests.xctest"
+               BlueprintName = "UseCasesIntegrationTests"
+               ReferencedContainer = "container:clean_app.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,15 +43,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "535859812AA52202008AE97C"
-            BuildableName = "Application.framework"
-            BlueprintName = "Application"
-            ReferencedContainer = "container:mango_treinamento.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

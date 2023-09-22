@@ -4,6 +4,7 @@ import Shared
 
 struct SignUpView: View {
     @StateObject var presenter: SignUpPresenter
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @State var name:String = ""
     @State var email:String = ""
@@ -14,8 +15,8 @@ struct SignUpView: View {
     var body: some View {
         NavigationStack {
             VStack {
-                LogoAppView()
-                TitleScreenView(titleName: "CADASTRO")
+                HeaderView()
+                TitleScreenView(titleName: "CADASTRO", color: CustomColor.primaryDark)
 
                 VStack(spacing: 16){
 
@@ -75,6 +76,15 @@ struct SignUpView: View {
             .frame(minWidth: /*@START_MENU_TOKEN@*/0/*@END_MENU_TOKEN@*/, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
             .background(.white)
             .navigationTitle("ForDev")
+            .navigationBarBackButtonHidden()
+            .navigationBarItems(leading: Image(systemName: "chevron.backward")
+                .foregroundColor(.white).fontWeight(.semibold)
+                .padding(.vertical, 16)
+                .padding(.trailing, 28)
+                .onTapGesture {
+                    self.presentationMode.wrappedValue.dismiss()
+                }
+            )
             .navigationBarTitleDisplayMode(.inline)
             .toolbarBackground(.visible, for: .navigationBar)
             .toolbarBackground(CustomColor.primaryDark, for: .navigationBar)
